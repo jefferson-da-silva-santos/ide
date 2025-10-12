@@ -12,28 +12,32 @@
   min-height: 100vh;
   @include flex(column, center, center, 0);
   background-color: #9cd9ff;
-
+  padding: 1rem;
   .wrapper {
     @include grid(1fr 1fr, 1fr, 0);
     width: 100%;
+    position: relative;
     max-width: 50rem;
-    border-radius: 20px;
+    border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
     background-color: #fff;
+    height: 30rem;
 
     .col {
+      transition: all 0.5s ease-in-out;
       &:nth-child(1) {
+        z-index: 2;
         background-image: url("https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/IDE-PROJECT/ab6765630000ba8a4916655bf26e3830b33aa94f.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        border-radius: 0 4rem 4rem 0;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.323);
       }
 
       &:nth-child(2) {
         padding: 4rem 2.5rem;
+        z-index: 1;
         @include flex(column, center, baseline, 1.5rem);
 
         .title {
@@ -47,7 +51,6 @@
           width: 100%;
           @include flex(column, center, baseline, 1.5rem);
 
-
           label {
             @include flex(column, center, baseline, 3px);
             width: 100%;
@@ -55,9 +58,10 @@
 
             small {
               position: absolute;
-              font-size: .7rem;
+              font-size: 0.7rem;
               color: red;
-              bottom: -1rem;
+              font-weight: 500;
+              bottom: -13px;
             }
 
             span {
@@ -109,6 +113,7 @@
           .forgot-password {
             font-size: 0.8rem;
             margin: 0 auto;
+            cursor: pointer;
             text-align: right;
             color: #168cd5;
           }
@@ -118,16 +123,50 @@
             padding: 0.7rem;
             border: none;
             border-radius: 5px;
-            background-image: linear-gradient(
-              to right,
-              #40b6ff,
-              darken(#40b6ff, 5%)
-            );
+            background-color: #40b6ff;
             color: #fff;
+            font-weight: 500;
             cursor: pointer;
+            transition: background-color 0.5s ease-in-out;
+
+            &:hover {
+              background-color: #168cd5;
+            }
           }
         }
       }
     }
+
+    .col1-login-class {
+      position: absolute;
+      left: 0rem;
+      width: 50%;
+      height: 100%;
+      border-radius: 0 4rem 4rem 0;
+    }
+
+    .col1-forgot-class {
+      position: absolute;
+      left: 25rem;
+      width: 50%;
+      height: 100%;
+      border-radius: 4rem 0 0 4rem;
+    }
+
+    .col2-login-class {
+      position: absolute;
+      left: 25rem;
+      width: 50%;
+      height: 100%;
+    }
+
+    .col2-forgot-class {
+      position: absolute;
+      left: 0rem;
+      width: 50%;
+      height: 100%;
+    }
   }
 }
+
+@import "media.scss";
