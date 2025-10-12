@@ -1,0 +1,133 @@
+@import "mixins.scss";
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+.container-login {
+  min-height: 100vh;
+  @include flex(column, center, center, 0);
+  background-color: #9cd9ff;
+
+  .wrapper {
+    @include grid(1fr 1fr, 1fr, 0);
+    width: 100%;
+    max-width: 50rem;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+    background-color: #fff;
+
+    .col {
+      &:nth-child(1) {
+        background-image: url("https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/IDE-PROJECT/ab6765630000ba8a4916655bf26e3830b33aa94f.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 0 4rem 4rem 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.323);
+      }
+
+      &:nth-child(2) {
+        padding: 4rem 2.5rem;
+        @include flex(column, center, baseline, 1.5rem);
+
+        .title {
+          @include flex(column, center, center, 0.5rem);
+          font-size: 2rem;
+          margin: 0 auto;
+          color: #40b6ff;
+        }
+
+        .form {
+          width: 100%;
+          @include flex(column, center, baseline, 1.5rem);
+
+
+          label {
+            @include flex(column, center, baseline, 3px);
+            width: 100%;
+            position: relative;
+
+            small {
+              position: absolute;
+              font-size: .7rem;
+              color: red;
+              bottom: -1rem;
+            }
+
+            span {
+              font-size: 0.8rem;
+              text-transform: uppercase;
+              color: #566a7f;
+            }
+
+            input {
+              width: 100%;
+              padding: 0.8rem;
+              background-color: #f3f3f3;
+              border: 1px solid #f3f3f3;
+              border: none;
+              border-radius: 5px;
+              outline: none;
+              transition: padding-right 0.5s ease-in-out;
+
+              &:focus {
+                padding-right: 1rem;
+              }
+            }
+
+            .input-password {
+              @include flex(row, space-between, center, 0);
+              width: 100%;
+              input {
+                border-right: none;
+                border-radius: 5px 0 0 5px;
+              }
+
+              .button-hide-password {
+                padding: 0.5rem;
+                border: none;
+                border-radius: 0 5px 5px 0;
+                background-color: #f3f3f3;
+                color: #fff;
+                cursor: pointer;
+
+                i {
+                  font-size: 1.5rem;
+                  color: #c3c3c3;
+                  font-weight: 100;
+                }
+              }
+            }
+          }
+
+          .forgot-password {
+            font-size: 0.8rem;
+            margin: 0 auto;
+            text-align: right;
+            color: #168cd5;
+          }
+
+          .btn-login {
+            width: 100%;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 5px;
+            background-image: linear-gradient(
+              to right,
+              #40b6ff,
+              darken(#40b6ff, 5%)
+            );
+            color: #fff;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

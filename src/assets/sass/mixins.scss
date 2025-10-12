@@ -1,0 +1,20 @@
+@mixin flex($direction, $justify, $align, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin grid($columns, $rows, $gap) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: repeat($rows, 1fr);
+  gap: $gap;
+}
+
+@mixin media($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
