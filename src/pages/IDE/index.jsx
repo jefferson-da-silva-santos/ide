@@ -9,7 +9,7 @@ export const IDE = () => {
           <h1 className="ide-title">
             <ReactTyped
               strings={[
-                '"Jesus não se esqueceu de você!! Ele ainda te espera, e te ama."',
+                '"Jesus não se esqueceu de você! Ele ainda te espera, e te ama."',
               ]}
               typeSpeed={50}   // velocidade de digitação
               backSpeed={30}   // velocidade de apagar
