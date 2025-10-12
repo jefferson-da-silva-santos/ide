@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+.container-login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  background-color: #9cd9ff;
+}
+.container-login .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(1fr, 1fr);
+  gap: 0;
+  width: 100%;
+  max-width: 50rem;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+  background-color: #fff;
+}
+.container-login .wrapper .col:nth-child(1) {
+  background-image: url("https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/IDE-PROJECT/ab6765630000ba8a4916655bf26e3830b33aa94f.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0 4rem 4rem 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.323);
+}
+.container-login .wrapper .col:nth-child(2) {
+  padding: 4rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+.container-login .wrapper .col:nth-child(2) .title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+  margin: 0 auto;
+  color: #40b6ff;
+}
+.container-login .wrapper .col:nth-child(2) .form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+.container-login .wrapper .col:nth-child(2) .form label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  gap: 3px;
+  width: 100%;
+  position: relative;
+}
+.container-login .wrapper .col:nth-child(2) .form label small {
+  position: absolute;
+  font-size: 0.7rem;
+  color: red;
+  bottom: -1rem;
+}
+.container-login .wrapper .col:nth-child(2) .form label span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #566a7f;
+}
+.container-login .wrapper .col:nth-child(2) .form label input {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #f3f3f3;
+  border: 1px solid #f3f3f3;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  transition: padding-right 0.5s ease-in-out;
+}
+.container-login .wrapper .col:nth-child(2) .form label input:focus {
+  padding-right: 1rem;
+}
+.container-login .wrapper .col:nth-child(2) .form label .input-password {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+.container-login .wrapper .col:nth-child(2) .form label .input-password input {
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+}
+.container-login .wrapper .col:nth-child(2) .form label .input-password .button-hide-password {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  background-color: #f3f3f3;
+  color: #fff;
+  cursor: pointer;
+}
+.container-login .wrapper .col:nth-child(2) .form label .input-password .button-hide-password i {
+  font-size: 1.5rem;
+  color: #c3c3c3;
+  font-weight: 100;
+}
+.container-login .wrapper .col:nth-child(2) .form .forgot-password {
+  font-size: 0.8rem;
+  margin: 0 auto;
+  text-align: right;
+  color: #168cd5;
+}
+.container-login .wrapper .col:nth-child(2) .form .btn-login {
+  width: 100%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #40b6ff, rgb(38.5, 172.2539267016, 255));
+  color: #fff;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=styles.css.map */
