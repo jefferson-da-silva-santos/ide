@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Home } from "./components/Home"
-import { IDE } from "./components/IDE"
-import { Login } from "./components/Login"
+import { Home } from "./pages/Home"
+import { IDE } from "./pages/IDE"
+import { Login } from "./pages/Login"
 
 function App() {
 

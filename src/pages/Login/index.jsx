@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import L_logo from '../../assets/image/L_logo.png';
 
 export const Login = () => {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [showFormForgotPassword, setShowFormForgotPassword] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 820);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -27,9 +40,14 @@ export const Login = () => {
   return (
     <div className="container-login">
       <section className="wrapper">
-        <section className={`col ${!showFormForgotPassword ? 'col1-login-class' : 'col1-forgot-class'}`}></section>
-        <section className={`col ${!showFormForgotPassword ? 'col2-login-class' : 'col2-forgot-class'}`}>
-          <h1 className="title">{!showFormForgotPassword ? "Login" : "Recuperar senha"}</h1>
+        <section className={`col $ ${!showFormForgotPassword && !isMobile ? 'col1-login-class' : 'col1-forgot-class'}`}></section>
+        <section className={`col ${!showFormForgotPassword && !isMobile ? 'col2-login-class' : 'col2-forgot-class'}`}>
+          <h1 className="title">{!showFormForgotPassword ? (
+            <div className="title-login">
+              <img className="logo" src={L_logo} alt="" />
+              <span>ogin</span>
+            </div>
+          ) : "Recuperar senha"}</h1>
           {!showFormForgotPassword && (
              <form className="form" onSubmit={formik.handleSubmit}>
             <label>

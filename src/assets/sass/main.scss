@@ -45,6 +45,14 @@
           font-size: 2rem;
           margin: 0 auto;
           color: #40b6ff;
+          text-align: center;
+
+          .title-login {
+            @include flex(row, center, baseline, 0);
+            img {
+              width: 2.5rem;
+            }
+          }
         }
 
         .form {
@@ -113,8 +121,8 @@
           .forgot-password {
             font-size: 0.8rem;
             margin: 0 auto;
+            text-align: center;
             cursor: pointer;
-            text-align: right;
             color: #168cd5;
           }
 
