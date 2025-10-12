@@ -1,4 +1,8 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -186,6 +190,83 @@
   height: 100%;
 }
 
+/* src/components/IDE.css */
+.ide-container {
+  background-image: url("https://scontent.cdninstagram.com/v/t51.75761-15/474548298_18343645135194850_681295967062939706_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzU1MDQ1NDEyOTgwMzgyNjU4NA%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTA4MC5zZHIuQzMifQ%3D%3D&_nc_ohc=Z4zjirieUHQQ7kNvwED5YaE&_nc_oc=AdmkrNVJHUB-zkob7Ph9DcLl74SCMiJVh0G1Ky4qksy4mvsGZZckfwkycWhIw5OCifk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=OVmBiosjR6_aovBMq_qT1g&oh=00_AfeeA7dmS-fMUT4xyujumhDzk69bOvtj2oofSZF3X0ltiw&oe=68F1CABC"); /* Ajuste o caminho conforme onde você colocou a imagem */
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Ocupa a altura total da viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white; /* Cor do texto padrão */
+  position: relative;
+}
+
+.ide-overlay-father {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.764);
+}
+
+.ide-overlay {
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 800px;
+}
+
+.ide-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: #FFD700; /* Cor dourada para o título */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.ide-verse {
+  font-family: "Open Sans", sans-serif; /* Fonte mais legível para o versículo */
+  font-size: 1.5em;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  font-style: italic;
+  color: #E0E0E0;
+}
+
+.ide-reference {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+.ide-speaker {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #A9A9A9;
+  margin-top: 20px;
+}
+
+/* Adicione fontes do Google Fonts no seu arquivo index.html ou aqui */
+/* Exemplo de importação no CSS: */
+/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap'); */
+.typed-cursor {
+  color: #FFD700; /* ou a cor do teu tema */
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
 @keyframes imgBanner {
   0% {
     background-position-y: 0%;
