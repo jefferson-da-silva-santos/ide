@@ -185,7 +185,7 @@
 
 /* src/components/IDE.css */
 .ide-container {
-  background-image: url('https://scontent.cdninstagram.com/v/t51.75761-15/474548298_18343645135194850_681295967062939706_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzU1MDQ1NDEyOTgwMzgyNjU4NA%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTA4MC5zZHIuQzMifQ%3D%3D&_nc_ohc=Z4zjirieUHQQ7kNvwED5YaE&_nc_oc=AdmkrNVJHUB-zkob7Ph9DcLl74SCMiJVh0G1Ky4qksy4mvsGZZckfwkycWhIw5OCifk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=OVmBiosjR6_aovBMq_qT1g&oh=00_AfeeA7dmS-fMUT4xyujumhDzk69bOvtj2oofSZF3X0ltiw&oe=68F1CABC'); /* Ajuste o caminho conforme onde você colocou a imagem */
+  background-image: url("https://scontent.cdninstagram.com/v/t51.75761-15/474548298_18343645135194850_681295967062939706_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzU1MDQ1NDEyOTgwMzgyNjU4NA%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTA4MC5zZHIuQzMifQ%3D%3D&_nc_ohc=Z4zjirieUHQQ7kNvwED5YaE&_nc_oc=AdmkrNVJHUB-zkob7Ph9DcLl74SCMiJVh0G1Ky4qksy4mvsGZZckfwkycWhIw5OCifk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=OVmBiosjR6_aovBMq_qT1g&oh=00_AfeeA7dmS-fMUT4xyujumhDzk69bOvtj2oofSZF3X0ltiw&oe=68F1CABC"); /* Ajuste o caminho conforme onde você colocou a imagem */
   background-size: cover;
   background-position: center;
   height: 100vh; /* Ocupa a altura total da viewport */
@@ -195,6 +195,61 @@
   text-align: center;
   color: white; /* Cor do texto padrão */
   position: relative;
+
+  @keyframes animationButton {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .ide-link-login {
+    @include flex(row, center, center, 0);
+    z-index: 999;
+    text-decoration: none;
+    position: fixed;
+    width: 3rem;
+    height: 3rem;
+    top: 1rem;
+    background-image: url("https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/IDE-PROJECT/ab6765630000ba8a4916655bf26e3830b33aa94f.jpg");
+    background-size: cover;
+    left: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    animation: animationButton 2s infinite;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.512);
+
+    i {
+      font-size: 1.5rem;
+      color: #fff;
+    }
+  }
+
+  .ide-link {
+    z-index: 999;
+    text-decoration: none;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: #ffd700;
+    cursor: pointer;
+    animation: animationButton 2s infinite;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+
+    i {
+      font-size: 2rem;
+      color: #000;
+    }
+  }
 }
 
 .ide-overlay-father {
@@ -216,21 +271,21 @@
 }
 
 .ide-title {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 3.5em;
   margin-bottom: 20px;
   line-height: 1.2;
-  color: #FFD700; /* Cor dourada para o título */
+  color: #ffd700; /* Cor dourada para o título */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .ide-verse {
-  font-family: 'Open Sans', sans-serif; /* Fonte mais legível para o versículo */
+  font-family: "Open Sans", sans-serif; /* Fonte mais legível para o versículo */
   font-size: 1.5em;
   margin-bottom: 30px;
   line-height: 1.5;
   font-style: italic;
-  color: #E0E0E0;
+  color: #e0e0e0;
 }
 
 .ide-reference {
@@ -240,10 +295,10 @@
 }
 
 .ide-speaker {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1.2em;
   font-weight: bold;
-  color: #A9A9A9;
+  color: #a9a9a9;
   margin-top: 20px;
 }
 
@@ -252,7 +307,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap'); */
 
 .typed-cursor {
-  color: #FFD700; /* ou a cor do teu tema */
+  color: #ffd700; /* ou a cor do teu tema */
   animation: blink 1s infinite;
 }
 
@@ -262,5 +317,128 @@
   }
 }
 
+.container-home {
+  min-height: 100vh;
+  @include grid(10rem 1fr, 5rem 1fr, 0);
+  background-color: #9cd9ff;
+  .main-home {
+        grid-row: 2 / -1;
+    grid-column: 2 / -1;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10rem;
+    height: 100vh;
+    background-color: #fff;
+    @include flex(row, flex-start, baseline, 0);
+    grid-row: 1 / -1;
+    padding: 1rem;
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
+    &-list {
+      @include flex(column, flex-start, baseline, 1rem);
+      list-style: none;
+
+      .navbar-item {
+        @include flex(row, flex-start, center, 0.5rem);
+        cursor: pointer;
+
+        i {
+          font-size: 1.5rem;
+          color: #0077b6; /* azul profundo pra contraste */
+        }
+
+        .navbar-link {
+          text-decoration: none;
+          color: #0077b6; /* azul profundo pra contraste */
+          font-weight: 600;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  
+  form {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 50rem;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #f8fcff; /* leve fundo azulado */
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(156, 217, 255, 0.6);
+    font-family: "Poppins", sans-serif;
+  }
+
+  h2 {
+    text-align: center;
+    color: #0077b6; /* azul profundo pra contraste */
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  div {
+    margin-bottom: 1rem;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    color: #004e71;
+    margin-bottom: 0.5rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 2px solid #9cd9ff;
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: #38bdf8; /* um azul mais vibrante */
+    box-shadow: 0 0 6px #9cd9ff;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    background-color: #9cd9ff;
+    color: #003049;
+    border: none;
+    border-radius: 10px;
+    padding: 0.9rem 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s ease;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #38bdf8;
+    transform: scale(1.05);
+    color: white;
+  }
+
+  div > div {
+    color: #dc2626;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+  }
+}
 
 @import "media.scss";

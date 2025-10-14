@@ -203,6 +203,58 @@
   color: white; /* Cor do texto padrão */
   position: relative;
 }
+@keyframes animationButton {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.ide-container .ide-link-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  z-index: 999;
+  text-decoration: none;
+  position: fixed;
+  width: 3rem;
+  height: 3rem;
+  top: 1rem;
+  background-image: url("https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/IDE-PROJECT/ab6765630000ba8a4916655bf26e3830b33aa94f.jpg");
+  background-size: cover;
+  left: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: animationButton 2s infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.512);
+}
+.ide-container .ide-link-login i {
+  font-size: 1.5rem;
+  color: #fff;
+}
+.ide-container .ide-link {
+  z-index: 999;
+  text-decoration: none;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: #ffd700;
+  cursor: pointer;
+  animation: animationButton 2s infinite;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+}
+.ide-container .ide-link i {
+  font-size: 2rem;
+  color: #000;
+}
 
 .ide-overlay-father {
   position: absolute;
@@ -227,7 +279,7 @@
   font-size: 3.5em;
   margin-bottom: 20px;
   line-height: 1.2;
-  color: #FFD700; /* Cor dourada para o título */
+  color: #ffd700; /* Cor dourada para o título */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -237,7 +289,7 @@
   margin-bottom: 30px;
   line-height: 1.5;
   font-style: italic;
-  color: #E0E0E0;
+  color: #e0e0e0;
 }
 
 .ide-reference {
@@ -250,7 +302,7 @@
   font-family: "Open Sans", sans-serif;
   font-size: 1.2em;
   font-weight: bold;
-  color: #A9A9A9;
+  color: #a9a9a9;
   margin-top: 20px;
 }
 
@@ -258,7 +310,7 @@
 /* Exemplo de importação no CSS: */
 /* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap'); */
 .typed-cursor {
-  color: #FFD700; /* ou a cor do teu tema */
+  color: #ffd700; /* ou a cor do teu tema */
   animation: blink 1s infinite;
 }
 
@@ -267,6 +319,130 @@
     opacity: 0;
   }
 }
+.container-home {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  grid-template-rows: 5rem 1fr;
+  gap: 0;
+  background-color: #9cd9ff;
+}
+.container-home .main-home {
+  grid-row: 2/-1;
+  grid-column: 2/-1;
+}
+.container-home .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10rem;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 0;
+  grid-row: 1/-1;
+  padding: 1rem;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.container-home .navbar-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 1rem;
+  list-style: none;
+}
+.container-home .navbar-list .navbar-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.container-home .navbar-list .navbar-item i {
+  font-size: 1.5rem;
+  color: #0077b6; /* azul profundo pra contraste */
+}
+.container-home .navbar-list .navbar-item .navbar-link {
+  text-decoration: none;
+  color: #0077b6; /* azul profundo pra contraste */
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.container-home form {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 50rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f8fcff; /* leve fundo azulado */
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(156, 217, 255, 0.6);
+  font-family: "Poppins", sans-serif;
+}
+.container-home h2 {
+  text-align: center;
+  color: #0077b6; /* azul profundo pra contraste */
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.container-home div {
+  margin-bottom: 1rem;
+}
+.container-home label {
+  display: block;
+  font-weight: 600;
+  color: #004e71;
+  margin-bottom: 0.5rem;
+}
+.container-home input,
+.container-home textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 2px solid #9cd9ff;
+  border-radius: 10px;
+  background-color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+.container-home input:focus,
+.container-home textarea:focus {
+  border-color: #38bdf8; /* um azul mais vibrante */
+  box-shadow: 0 0 6px #9cd9ff;
+}
+.container-home textarea {
+  resize: vertical;
+}
+.container-home button[type=submit] {
+  display: block;
+  width: 100%;
+  background-color: #9cd9ff;
+  color: #003049;
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+.container-home button[type=submit]:hover {
+  background-color: #38bdf8;
+  transform: scale(1.05);
+  color: white;
+}
+.container-home div > div {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
 @keyframes imgBanner {
   0% {
     background-position-y: 0%;

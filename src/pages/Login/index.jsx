@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import L_logo from '../../assets/image/L_logo.png';
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [showFormForgotPassword, setShowFormForgotPassword] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -34,6 +36,7 @@ export const Login = () => {
     }),
     onSubmit: (values) => {
       console.log("Enviado com fé:", values);
+      navigate('/home');
     },
   });
 

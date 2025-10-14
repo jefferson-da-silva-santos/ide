@@ -1,9 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ReactTyped } from "react-typed";
 
 export const IDE = () => {
   return (
     <div className="ide-container">
+      {/* Login */}
+      <Link className="ide-link-login" target="_blank" to={'/login'}>
+       
+      </Link>
+       {/* instagram */}
+        <Link className="ide-link" to={''}>
+          <i class='bx bxl-instagram'></i>
+        </Link>
+      
       <div className="ide-overlay-father">
         <div className="ide-overlay">
           <h1 className="ide-title">

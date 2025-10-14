@@ -1,7 +1,14 @@
+import NavBar from "../../components/BavBar"
+import { FormContent } from "../../components/FormContent"
+
 export const Home = () => {
   return (
     <div className="container-home">
-      <h1>Home</h1>
+      <NavBar />
+      <header className="header-home"></header>
+      <main className="main-home">
+        <FormContent />
+      </main>
     </div>
   )
 }
