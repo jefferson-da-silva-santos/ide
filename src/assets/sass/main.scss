@@ -319,8 +319,8 @@
 
 .container-home {
   min-height: 100vh;
-  @include grid(10rem 1fr, 5rem 1fr, 0);
-  background-color: #9cd9ff;
+  @include grid(15rem 1fr, 5rem 1fr, 0);
+  background-color: #F2F2F2;
   .main-home {
         grid-row: 2 / -1;
     grid-column: 2 / -1;
@@ -330,14 +330,20 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 10rem;
+    width: 15rem;
     height: 100vh;
     background-color: #fff;
-    @include flex(row, flex-start, baseline, 0);
+    @include flex(column, flex-start, baseline, 0);
     grid-row: 1 / -1;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 0 0 1rem 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(101, 101, 101, 0.2);
+
+    &-logo {
+      margin-bottom: 2rem;
+      width: 5rem;
+      height: 5rem;
+    }
     
     &-list {
       @include flex(column, flex-start, baseline, 1rem);
@@ -363,14 +369,13 @@
   }
   
   form {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 50rem;
     margin: 2rem auto;
     padding: 2rem;
-    background: #f8fcff; /* leve fundo azulado */
+    background: #ffffff; /* leve fundo azulado */
     border-radius: 15px;
-    box-shadow: 0 0 15px rgba(156, 217, 255, 0.6);
+    box-shadow: 0 0 10px rgba(101, 101, 101, 0.2);
     font-family: "Poppins", sans-serif;
   }
 
@@ -396,9 +401,9 @@
   textarea {
     width: 100%;
     padding: 0.7rem;
-    border: 2px solid #9cd9ff;
+    border: 1px solid #ffffff;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: #F2F2F2;
     font-size: 1rem;
     outline: none;
     transition: 0.3s;
@@ -430,7 +435,7 @@
 
   button[type="submit"]:hover {
     background-color: #38bdf8;
-    transform: scale(1.05);
+    transform: scale(1.01);
     color: white;
   }
 
