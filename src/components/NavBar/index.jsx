@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom"
+import banner from '../../assets/image/banner.png';
 
 const NavBar = () => {
   return (
     <nav className="navbar">
       <img
         className="navbar-logo"
-        src="https://static.ieadpe.org.br/ieadpe_logo_colorido_pequeno.png"
+        src={banner}
         alt=""
       />
       <ul className="navbar-list">

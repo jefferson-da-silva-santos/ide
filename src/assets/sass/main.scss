@@ -320,9 +320,35 @@
 .container-home {
   min-height: 100vh;
   @include grid(15rem 1fr, 5rem 1fr, 0);
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
+
+  .header-home {
+    grid-column: 2 / -1;
+    @include flex(row, flex-end, center, 0);
+
+    .header-user {
+      @include flex(row, flex-end, center, 0.5rem);
+      cursor: pointer;
+      background-color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 0.8rem;
+      box-shadow: 0 0 10px rgba(101, 101, 101, 0.2);
+      margin-right: 1rem;
+
+      i {
+        font-size: 1.5rem;
+        color: #003049;
+      }
+
+      span {
+        font-weight: 600;
+        color: #003049;
+      }
+    }
+  }
+
   .main-home {
-        grid-row: 2 / -1;
+    grid-row: 2 / -1;
     grid-column: 2 / -1;
   }
 
@@ -335,44 +361,70 @@
     background-color: #fff;
     @include flex(column, flex-start, baseline, 0);
     grid-row: 1 / -1;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 0 0 1rem 1rem;
     box-shadow: 0 0 10px rgba(101, 101, 101, 0.2);
 
     &-logo {
       margin-bottom: 2rem;
-      width: 5rem;
-      height: 5rem;
+      width: 100%;
+      border-radius: 10px;
     }
-    
+
     &-list {
-      @include flex(column, flex-start, baseline, 1rem);
+      @include flex(column, flex-start, baseline, 0);
       list-style: none;
+      width: 100%;
 
       .navbar-item {
         @include flex(row, flex-start, center, 0.5rem);
         cursor: pointer;
+        width: 100%;
+        color: #7c90a6;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        padding: 10px 1.5em;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1em;
+        transition: background-color 0.3s ease-in-out;
+        width: 100%;
+
+        &:hover {
+          background-color: #f2f2f2;
+        }
 
         i {
-          font-size: 1.5rem;
-          color: #0077b6; /* azul profundo pra contraste */
+          color: #566a7f;
+          font-size: 1.388rem;
         }
 
         .navbar-link {
+          cursor: pointer;
+          width: 100%;
+          color: #7c90a6;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          border-radius: 5px;
           text-decoration: none;
-          color: #0077b6; /* azul profundo pra contraste */
-          font-weight: 600;
-          font-size: 1.2rem;
+          font-size: 1em;
+          transition: background-color 0.3s ease-in-out;
+          width: 100%;
         }
       }
     }
   }
-  
+
   form {
     width: 100%;
     max-width: 50rem;
     margin: 2rem auto;
-    padding: 2rem;
+    padding: 1rem 2rem 2rem 2rem;
     background: #ffffff; /* leve fundo azulado */
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(101, 101, 101, 0.2);
@@ -382,7 +434,7 @@
   h2 {
     text-align: center;
     color: #0077b6; /* azul profundo pra contraste */
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     font-weight: 700;
   }
 
@@ -403,7 +455,7 @@
     padding: 0.7rem;
     border: 1px solid #ffffff;
     border-radius: 10px;
-    background-color: #F2F2F2;
+    background-color: #f2f2f2;
     font-size: 1rem;
     outline: none;
     transition: 0.3s;

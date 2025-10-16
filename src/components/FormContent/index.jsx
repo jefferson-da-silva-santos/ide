@@ -19,7 +19,9 @@ export const FormContent = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-       <h2>Formulário Evangelístico ✝️</h2>
+       <div className="header-form">
+         <h2>Formulário Evangelístico ✝️</h2>
+       </div>
       <div>
         <label htmlFor="palavraEsperanca">Palavra de Esperança *</label>
         <input
