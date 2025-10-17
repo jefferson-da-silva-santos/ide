@@ -666,6 +666,9 @@
   .container-home .main-home {
     padding: 0 1rem;
   }
+  .container-home form .form-group .error {
+    font-size: 0.7rem;
+  }
   .container-home label {
     margin-bottom: 4px;
   }
