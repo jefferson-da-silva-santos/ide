@@ -63,6 +63,24 @@
 }
 
 @include media(820px) {
+  .container-home .main-home {
+    padding: 0 1rem;
+  }
+  .container-home label {
+    margin-bottom: 4px;
+  }
+  .container-home h2 {
+    margin-bottom: 0;
+    font-size: 1.3rem;
+  }
+  .container-home .header-home .menu {
+    margin-left: 1rem;
+  }
+
+  .container-home form {
+    padding: 1rem;
+  }
+
   .container-login .wrapper {
     @include grid(1fr, 2fr 1fr, 0);
     height: 33rem;

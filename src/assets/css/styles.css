@@ -663,6 +663,22 @@
   }
 }
 @media screen and (max-width: 820px) {
+  .container-home .main-home {
+    padding: 0 1rem;
+  }
+  .container-home label {
+    margin-bottom: 4px;
+  }
+  .container-home h2 {
+    margin-bottom: 0;
+    font-size: 1.3rem;
+  }
+  .container-home .header-home .menu {
+    margin-left: 1rem;
+  }
+  .container-home form {
+    padding: 1rem;
+  }
   .container-login .wrapper {
     display: grid;
     grid-template-columns: 1fr;
