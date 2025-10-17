@@ -1,17 +1,30 @@
-import { Link } from "react-router-dom"
-import banner from '../../assets/image/banner.png';
+import { Link } from "react-router-dom";
+import banner from "../../assets/image/banner.png";
+import useMenu from "../../hooks/useMenu";
+import { useEffect, useState } from "react";
 
 const NavBar = () => {
+  const { isMenuOpen, toggleMenu } = useMenu();
+  const [classMenu, setClassMenu] = useState("close-menu");
+
+  useEffect(() => {
+    setClassMenu(isMenuOpen ? "open-menu" : "close-menu");
+  }, [isMenuOpen]);
+
   return (
-    <nav className="navbar">
+
+    <nav className={`navbar ${classMenu}`}>
+      {/* Alt da imagem ajustado */}
       <img
         className="navbar-logo"
         src={banner}
-        alt=""
+        alt="Logo do Banner da Aplicação"
       />
-      <button className="close-nav">
+
+      <button className="close-nav" onClick={toggleMenu} style={{ display: isMenuOpen ? 'flex' : 'none' }}>
         <i className="bx bx-x"></i>
       </button>
+
       <ul className="navbar-list">
         <li className="navbar-item">
           <i className="bx bx-home"></i>
@@ -28,6 +41,6 @@ const NavBar = () => {
       </ul>
     </nav>
   );
-}
+};
 
-export default NavBar
+export default NavBar;

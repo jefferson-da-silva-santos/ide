@@ -3,7 +3,6 @@ const Footer = () => {
     <footer className="footer">
       <cite>Contudo, quando prego o evangelho, não posso me orgulhar, pois me é imposta a necessidade de pregar. Ai de mim se não pregar o evangelho!</cite>
       <cite>1 Coríntios 9:16</cite>
-
     </footer>
   );
 }
