@@ -2,9 +2,7 @@
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import React from "react"; // Necessário para o JSX
-
-// --- OBJETOS DE DADOS PARA OS SELECTS (MANTIDOS NO TOPO DO ARQUIVO) ---
+import React from "react"; 
 
 export const backgroundOptions = [
   { value: "cor-solida", label: "Cor Sólida" },
@@ -174,9 +172,6 @@ export const FormContent = () => {
         )}
       </div>
       
-
-
-      {/* --- CAMPO ANTIGO: Autor da Palavra (Opcional) --- */}
       <div className="form-group">
         <label htmlFor="autorFrase">Autor da Palavra (opcional)</label>
         <input

@@ -535,8 +535,8 @@
   button[type="submit"] {
     display: block;
     width: 100%;
-    background-color: #9cd9ff;
-    color: #003049;
+    background-image: linear-gradient(to bottom, #065a90, #004173);
+    color: #ffffff;
     border: none;
     border-radius: 10px;
     padding: 0.9rem 1.5rem;
@@ -547,7 +547,6 @@
   }
 
   button[type="submit"]:hover {
-    background-color: #38bdf8;
     transform: scale(1.01);
     color: white;
   }
@@ -562,14 +561,28 @@
 .footer {
   @include flex(row, space-between, center, 0);
   padding: 1rem 2rem;
-  background-color: #003049;
+  background-image: linear-gradient(to bottom, #065a90, #004173);
   color: #fff;
   width: 100%;
   grid-column: 2 / -1;
   grid-row: 3 / 3;
   bottom: 0;
-  margin-top: 2rem;
+  margin-top: 5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
 }
+
+.ide-player {
+  @include flex(column, center, center, 2rem);
+
+  iframe {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border: none;
+  }
+}
+
 
 @import "media.scss";
