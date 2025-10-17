@@ -48,7 +48,7 @@
       animation: openMenu 0.3s ease-in-out forwards;
       display: flex;
     }
-  
+
     .close-menu {
       animation: closeMenu 0.3s ease-in-out forwards;
     }
@@ -87,5 +87,31 @@
     padding: 2rem 2rem;
     justify-content: flex-start;
     gap: 1rem;
+  }
+}
+
+@include media(420px) {
+  .ide-player iframe {
+    height: 190px;
+  }
+
+  .ide-title {
+    font-size: 2rem;
+  }
+
+  .ide-player {
+    gap: 1rem;
+  }
+
+  .ide-overlay {
+    padding: 1em;
+  }
+
+  .ide-verse {
+    margin-bottom: 1em;
+  }
+
+  .ide-verse {
+    font-size: 1.3rem;
   }
 }

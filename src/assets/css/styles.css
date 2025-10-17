@@ -691,5 +691,25 @@
     gap: 1rem;
   }
 }
+@media screen and (max-width: 420px) {
+  .ide-player iframe {
+    height: 190px;
+  }
+  .ide-title {
+    font-size: 2rem;
+  }
+  .ide-player {
+    gap: 1rem;
+  }
+  .ide-overlay {
+    padding: 1em;
+  }
+  .ide-verse {
+    margin-bottom: 1em;
+  }
+  .ide-verse {
+    font-size: 1.3rem;
+  }
+}
 
 /*# sourceMappingURL=styles.css.map */
