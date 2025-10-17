@@ -8,6 +8,9 @@ const NavBar = () => {
         src="https://static.ieadpe.org.br/ieadpe_logo_colorido_pequeno.png"
         alt=""
       />
+      <button className="close-nav">
+        <i className="bx bx-x"></i>
+      </button>
       <ul className="navbar-list">
         <li className="navbar-item">
           <i className="bx bx-home"></i>

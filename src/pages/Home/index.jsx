@@ -6,6 +6,9 @@ export const Home = () => {
     <div className="container-home">
       <NavBar />
       <header className="header-home">
+        <button className="menu">
+          <i className="bx bx-menu"></i>
+        </button>
         <div className="header-user">
           <i className="bx bx-user"></i>
           <span>Nome do Usuário</span>
