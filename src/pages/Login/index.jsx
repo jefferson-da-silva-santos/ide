@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import L_logo from '../../assets/image/L_logo.png';
-import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { formatDataLogin } from "../../utils/format";
 
 export const Login = () => {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [showFormForgotPassword, setShowFormForgotPassword] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const navigate = useNavigate();
+  const { login, loadingLogin } = useAuth();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -34,9 +35,9 @@ export const Login = () => {
         .min(6, "A senha deve ter no mínimo 6 caracteres")
         .required("A senha é obrigatória"),
     }),
-    onSubmit: (values) => {
-      console.log("Enviado com fé:", values);
-      navigate('/home');
+    onSubmit: async (values) => {
+      console.log(values);
+      await login(formatDataLogin(values));
     },
   });
 
@@ -116,7 +117,7 @@ export const Login = () => {
                 Voltar para área de login
               </small>
               <button className="btn-login" type="submit">
-                {!showFormForgotPassword ? "Entrar" : "Recuperar senha"}
+                {!showFormForgotPassword ? loadingLogin ? "Carregando..." : "Entrar" : "Recuperar senha"}
               </button>
             </form>
           )}

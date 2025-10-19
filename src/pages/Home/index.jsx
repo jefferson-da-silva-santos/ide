@@ -1,10 +1,13 @@
-import NavBar from "../../components/NavBar"
-import { FormContent } from "../../components/FormContent"
-import Footer from "../../components/Footer"
+import NavBar from "../../components/NavBar";
+import { FormContent } from "../../components/FormContent";
+import Footer from "../../components/Footer";
 import useMenu from "../../hooks/useMenu";
+import useAuth from "../../hooks/useAuth";
 
 export const Home = () => {
   const { toggleMenu } = useMenu();
+  const { user } = useAuth()
+
   return (
     <div className="container-home">
       <NavBar />
@@ -14,7 +17,7 @@ export const Home = () => {
         </button>
         <div className="header-user">
           <i className="bx bx-user"></i>
-          <span>Nome do Usuário</span>
+          <span>{user?.nome || "Usuário"}</span>
         </div>
       </header>
       <main className="main-home">
@@ -22,5 +25,5 @@ export const Home = () => {
       </main>
       <Footer />
     </div>
-  )
-}
+  );
+};

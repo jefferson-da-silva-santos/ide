@@ -2,17 +2,18 @@ import { Link } from "react-router-dom";
 import banner from "../../assets/image/banner.png";
 import useMenu from "../../hooks/useMenu";
 import { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const NavBar = () => {
   const { isMenuOpen, toggleMenu } = useMenu();
   const [classMenu, setClassMenu] = useState("close-menu");
+   const { logout } = useAuth();
 
   useEffect(() => {
     setClassMenu(isMenuOpen ? "open-menu" : "close-menu");
   }, [isMenuOpen]);
 
   return (
-
     <nav className={`navbar ${classMenu}`}>
       {/* Alt da imagem ajustado */}
       <img
@@ -34,7 +35,7 @@ const NavBar = () => {
         </li>
         <li className="navbar-item">
           <i className="bx bx-log-out"></i>
-          <Link className="navbar-link" to="/login">
+          <Link className="navbar-link" to="/login" onClick={logout}>
             Sair
           </Link>
         </li>

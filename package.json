@@ -15,9 +15,13 @@
     "build:css": "npm-run-all compile:sass prefix:css compress:css"
   },
   "dependencies": {
+    "axios": "^1.12.2",
     "boxicons": "^2.1.4",
     "formik": "^2.4.6",
+    "notyf": "^3.10.0",
     "npm-run-all": "^4.1.5",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.9.7",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.3",
