@@ -17,7 +17,7 @@ export const Home = () => {
         </button>
         <div className="header-user">
           <i className="bx bx-user"></i>
-          <span>{user?.nome || "Usuário"}</span>
+          <span>{user?.nome_usuario || "Usuário"}</span>
         </div>
       </header>
       <main className="main-home">

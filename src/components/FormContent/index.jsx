@@ -36,16 +36,10 @@ const DADOS_ATUAIS = {
   tema: "escuro",
 };
 
-
-// --- COMPONENTE PRINCIPAL DO FORMULÁRIO ---
 export const FormContent = () => {
-  // Estado para controlar a exibição dos campos de dados atuais (preview)
   const [showCurrentData, setShowCurrentData] = useState(false);
 
-  // Função para alternar a visibilidade
   const toggleShowCurrentData = () => {
-    // Aqui você faria seu request (fetch) para carregar os dados
-    // setDadosAtuais(fetchedData); 
     setShowCurrentData(!showCurrentData);
   };
 
@@ -81,17 +75,15 @@ export const FormContent = () => {
         <h2>Formulário Evangelístico ✝️</h2>
       </div>
 
-      {/* --- BOTÃO PARA ACIONAR A VISUALIZAÇÃO DOS DADOS ATUAIS --- */}
-     <div style={{ marginBottom: "20px" }}>
+     <div>
       <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
         <InputSwitch checked={showCurrentData} onChange={toggleShowCurrentData} />
         {showCurrentData ? "Ocultar Dados Atuais" : "Visualizar Dados Atuais 🔎"}
       </label>
     </div>
       
-      {/* Mensagem Opcional de Instrução */}
       {showCurrentData && (
-        <p style={{marginBottom: '15px', padding: '10px', border: '1px solid #ccc', borderRadius: '4px'}}>
+        <p style={{ width: '100%', marginBottom: '15px', textAlign: 'center', padding: '10px', border: '1px solid #ccc', borderRadius: '4px'}}>
          <strong>Dados Atuais (Preview): </strong> Abaixo de cada campo de <strong>Nova Proclamação</strong>, você vê o dado que está atualmente ativo.
         </p>
       )}
@@ -153,12 +145,9 @@ export const FormContent = () => {
         </div>
       </div>
 
-      {/* ----------------------------------------------------------- */}
-      {/* ------------------- GRUPO: Autor da Frase ------------------- */}
       <div className="form-group">
         <label htmlFor="autorFrase">Nova Proclamação: Autor da Frase (Opcional)</label>
         
-        {/* CAMPO ORIGINAL DE EDIÇÃO/NOVA PROCLAMAÇÃO */}
         <input
           id="autorFrase"
           name="autorFrase"
@@ -172,7 +161,6 @@ export const FormContent = () => {
           <span className="error">{formik.errors.autorFrase}</span>
         )}
 
-        {/* CAMPO DE DADOS ATUAIS (PREVIEW) */}
         <div className={`current-data-preview ${showCurrentData ? '' : 'hidden'}`}>
           <label style={{fontSize: '0.85em'}}>Dados Atuais:</label>
           <input
