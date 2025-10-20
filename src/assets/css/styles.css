@@ -642,6 +642,23 @@
     background-position-y: 0%;
   }
 }
+@media screen and (max-height: 836px) {
+  .ide-title {
+    font-size: 3rem;
+  }
+  .ide-player iframe {
+    max-width: 454px;
+    height: 255px;
+  }
+}
+@media screen and (max-height: 742px) {
+  .ide-overlay {
+    padding: 21px;
+  }
+  .ide-verse {
+    margin-bottom: 10px;
+  }
+}
 @media screen and (max-width: 950px) {
   .container-home .header-home .menu {
     display: flex;

@@ -1,10 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ReactTyped } from "react-typed";
+import useApi from "../../hooks/useApi";
+import { showNotification } from "../../utils/showNotyf";
+
 
 export const IDE = () => {
+  const [content, setContent] = useState(null); 
+  
+  const {
+    loading: loadingContent,
+    fetchData: fetchContent
+  } = useApi({ endpoint: "/conteudos/1", method: "GET" });
+
+  const handleRequest = async () => {
+    try {
+      const result = await fetchContent();
+      if (result && result.status >= 200 && result.status < 300) {
+        const parsedContent = result.data.data.valor; 
+        setContent(parsedContent); 
+      }
+    } catch (error) {
+      showNotification("error", "Erro ao carregar o conteúdo");
+      console.error("Erro ao processar conteúdo:", error);
+    }
+  }
+
+  useEffect(() => {
+    handleRequest();
+  }, []);
+  
+  if (loadingContent || content === null) {
+      return (
+          <div className={`ide-container ${content?.tema || 'default'}-theme`}>
+              <div className="loading-indicator">
+                  Carregando o conteúdo... {/* Substitua por um spinner real */}
+              </div>
+          </div>
+      );
+  }
+
+  // Desestruturando o objeto 'content' para fácil acesso
+  // Se content for null ou indefinido, ele não chegará aqui devido à verificação acima.
+  const { mensagem, versiculo, referencia, link_louvor, tema } = content;
+
   return (
-    <div className="ide-container">
+    <div className={`ide-container ${tema}-theme`}> 
       <Link className="ide-link-login" target="_blank" to={"/login"}></Link>
 
       <Link className="ide-link" to={""}>
@@ -15,9 +56,7 @@ export const IDE = () => {
         <div className="ide-overlay">
           <h1 className="ide-title">
             <ReactTyped
-              strings={[
-                '"Jesus não se esqueceu de você! Ele ainda te espera, e te ama."',
-              ]}
+              strings={[mensagem]}
               typeSpeed={50}
               backSpeed={30}
               showCursor
@@ -27,10 +66,9 @@ export const IDE = () => {
           </h1>
 
           <p className="ide-verse">
-            "Porque o filho do homem veio buscar e salvar o que se havia
-            perdido"
+            {versiculo}
             <br />
-            <span className="ide-reference">Lc 19:26</span>
+            <span className="ide-reference">{referencia}</span>
           </p>
 
           {/* Reprodutor de música (YouTube embed) */}
@@ -38,7 +76,8 @@ export const IDE = () => {
             <p>🎵 Um louvor para o seu coração:</p>
             <iframe
               title="Música Gospel - Jesus"
-              src="https://www.youtube.com/embed/WH9YOCUebxo?modestbranding=1&rel=0&controls=1"
+              // 4. Substituir o link do louvor
+              src={link_louvor} 
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

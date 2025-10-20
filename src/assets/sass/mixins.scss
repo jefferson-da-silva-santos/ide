@@ -18,3 +18,10 @@
     @content;
   }
 }
+
+
+@mixin mediaHeight($breakpoint) {
+  @media screen and (max-height: $breakpoint) {
+    @content;
+  }
+}
