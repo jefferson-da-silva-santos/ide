@@ -5,8 +5,9 @@ import * as Yup from "yup";
 import { InputSwitch } from "primereact/inputswitch";
 import useApi from "../../hooks/useApi";
 import CurrentDataPreview from "./CurrentDataPreview";
-import { handleGetContents } from "../../api/requests"; // Assumindo que handleGetContents foi corrigida
+import { handleGetContents } from "../../api/requests";
 import { showNotification } from "../../utils/showNotyf";
+import { converterLinkYoutube } from "../../utils/format";
 
 // --- OPÇÕES DE SELEÇÃO ---
 export const backgroundOptions = [
@@ -15,14 +16,6 @@ export const backgroundOptions = [
   { value: "gradiente", label: "Gradiente Suave" },
   { value: "tema-padrao", label: "Tema Padrão do Sistema" },
   { value: "fundo-animado", label: "Fundo Animado (Vídeo)" },
-];
-
-export const louvorOptions = [
-  { value: "acustico-suave", label: "Acústico Suave" },
-  { value: "contemporaneo-ritmado", label: "Contemporâneo Ritmado" },
-  { value: "hino-tradicional", label: "Hino Tradicional" },
-  { value: "coral", label: "Estilo Coral" },
-  { value: "rock-gospel", label: "Rock/Pop Gospel" },
 ];
 
 export const temaOptions = [
@@ -59,7 +52,7 @@ export const FormContent = () => {
   } = useApi({ endpoint: "/conteudos/1", method: "GET" });
 
   const { loading: loadingUpdateContent, fetchData: fetchUpdateContent } =
-    useApi({ endpoint: "=", method: "" });
+    useApi({ endpoint: "", method: "" });
 
   useEffect(() => {
     handleGetContents(fetchContent, setApiData);
@@ -91,40 +84,29 @@ export const FormContent = () => {
         mensagem: formValues.palavraEsperanca,
         versiculo: formValues.textoBiblico,
         referencia: formValues.referencia,
-        link_louvor: formValues.louvor,
+        link_louvor: converterLinkYoutube(formValues.louvor),
         background: formValues.background,
         tema: formValues.tema,
       };
 
       const payload = {
-        id: apiData.id,
         chave: apiData.chave,
         valor: novoValor,
         descricao: apiData.descricao,
       };
 
       try {
-        const result = await fetchUpdateContent("/conteudos/1", "PUT", payload);
+        const result = await fetchUpdateContent(`/conteudos/${apiData.id}`, "PUT", payload);
         if (result && result.status >= 200 && result.status < 300) {
           showNotification("success", "Gloria a Deus! Deu tudo certo.");
         }
         
       } catch (error) {
+        showNotification("error", "Ocorreu um erro ao atualizar o conteúdo.");
         console.error("Erro ao atualizar o conteúdo:", error);
-        alert("Erro ao atualizar o conteúdo.");
       }
     },
   });
-
-  const currentBackgroundLabel =
-    backgroundOptions.find((o) => o.value === apiData?.valor?.background)
-      ?.label ||
-    apiData?.valor?.background ||
-    "";
-  const currentTemaLabel =
-    temaOptions.find((o) => o.value === apiData?.valor?.tema)?.label ||
-    apiData?.valor?.tema ||
-    "";
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -155,7 +137,7 @@ export const FormContent = () => {
             borderRadius: "4px",
           }}
         >
-          <strong>Dados Atuais (Preview): </strong> Abaixo de cada campo você vê
+          Dados Atuais (Preview): Abaixo de cada campo você vê
           o dado que está atualmente ativo.
         </p>
       )}
@@ -262,7 +244,7 @@ export const FormContent = () => {
 
         <CurrentDataPreview
           label={"imagem de fundo atual:"}
-          value={currentBackgroundLabel}
+          value={apiData?.valor?.background || ""}
           loadingContent={loadingContent}
           showCurrentData={showCurrentData}
         />
@@ -323,7 +305,7 @@ export const FormContent = () => {
 
         <CurrentDataPreview
           label={"tema atual:"}
-          value={currentTemaLabel}
+          value={apiData?.valor?.tema || ""}
           loadingContent={loadingContent}
           showCurrentData={showCurrentData}
         />

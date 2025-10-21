@@ -1,6 +1,12 @@
 export function converterLinkYoutube(link) {
   try {
     const url = new URL(link);
+
+    // Se já for um link de embed, retorna como está
+    if (url.hostname.includes('youtube.com') && url.pathname.includes('/embed/')) {
+      return link;
+    }
+
     let videoId = '';
 
     // Caso seja um link do tipo youtu.be

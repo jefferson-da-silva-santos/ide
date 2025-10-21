@@ -4,12 +4,20 @@ import * as Yup from "yup";
 import L_logo from '../../assets/image/L_logo.png';
 import useAuth from "../../hooks/useAuth";
 import { formatDataLogin } from "../../utils/format";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [showFormForgotPassword, setShowFormForgotPassword] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const { login, loadingLogin } = useAuth();
+  const { login, loadingLogin, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/home"); 
+    }
+  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -42,7 +50,9 @@ export const Login = () => {
   });
 
   return (
-    <div className="container-login">
+    <>
+    {!isAuthenticated && (
+      <div className="container-login">
       <section className="wrapper">
         <section className={`col $ ${!showFormForgotPassword && !isMobile ? 'col1-login-class' : 'col1-forgot-class'}`}></section>
         <section className={`col ${!showFormForgotPassword && !isMobile ? 'col2-login-class' : 'col2-forgot-class'}`}>
@@ -124,5 +134,7 @@ export const Login = () => {
         </section>
       </section>
     </div>
+    )}
+    </>
   );
 };

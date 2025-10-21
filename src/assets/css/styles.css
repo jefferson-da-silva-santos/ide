@@ -368,6 +368,13 @@
   align-items: center;
   gap: 0;
 }
+.container-home .header-home .group-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
 .container-home .header-home .header-user {
   display: flex;
   flex-direction: row;
@@ -410,6 +417,31 @@
 .container-home .header-home .menu i {
   font-size: 2rem;
   color: #003049;
+}
+.container-home .header-home .ide-link-ide {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  color: #003049;
+  text-decoration: none;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 10px rgba(101, 101, 101, 0.2);
+  margin-right: 1rem;
+  font-weight: 600;
+  border: none;
+  transition: 0.3s ease all;
+}
+.container-home .header-home .ide-link-ide i {
+  font-size: 2rem;
+  color: #ffb700;
+}
+.container-home .header-home .ide-link-ide:hover {
+  background-color: #003049;
+  color: #fff;
 }
 .container-home .main-home {
   display: flex;
@@ -805,6 +837,50 @@
   }
   .ide-verse {
     font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 410px) {
+  .container-home .header-home .ide-link-ide {
+    gap: 5px;
+    padding: 0.8rem 0.5rem;
+  }
+  .container-home .header-home .header-user {
+    gap: 5px;
+    padding: 1rem 0.5rem;
+  }
+  .container-home .header-home .header-user i {
+    font-size: 1.3rem;
+  }
+  .container-home .header-home .ide-link-ide i {
+    font-size: 1.3rem;
+  }
+  .container-home .header-home .header-user {
+    gap: 5px;
+    padding: 0.5rem;
+  }
+}
+@media screen and (max-width: 368px) {
+  .container-home .header-home .ide-link-ide {
+    margin-right: 10px;
+  }
+}
+@media screen and (max-width: 353px) {
+  .container-home .header-home .menu {
+    margin-right: 3px;
+  }
+  .container-home .header-home .ide-link-ide {
+    gap: 5px;
+    padding: 0.8rem 5px;
+  }
+  .container-home .header-home .header-user {
+    gap: 5px;
+    padding: 0.5rem 6px;
+  }
+  .container-home .header-home .ide-link-ide {
+    margin-right: 7px;
+  }
+  .container-home .header-home .menu {
+    width: 2.5rem;
   }
 }
 
