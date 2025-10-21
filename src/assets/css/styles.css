@@ -712,11 +712,11 @@
 }
 @media screen and (max-height: 836px) {
   .ide-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   .ide-player iframe {
-    max-width: 454px;
-    height: 255px;
+    max-width: 331px;
+    height: 180px;
   }
 }
 @media screen and (max-height: 742px) {
@@ -725,6 +725,31 @@
   }
   .ide-verse {
     margin-bottom: 10px;
+  }
+}
+@media screen and (max-height: 555px) {
+  .ide-title {
+    font-size: 2rem;
+  }
+}
+@media (max-height: 555px) {
+  .ide-title {
+    font-size: 2rem;
+    margin-bottom: 9px;
+  }
+  .ide-player {
+    gap: 1rem;
+  }
+  .ide-verse {
+    margin-bottom: 7px;
+  }
+  .ide-verse,
+  .ide-reference {
+    font-size: 1.1rem;
+  }
+  .ide-player iframe {
+    max-width: 329px;
+    height: 185px;
   }
 }
 @media screen and (max-width: 950px) {

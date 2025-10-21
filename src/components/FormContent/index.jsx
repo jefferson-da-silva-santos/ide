@@ -9,7 +9,6 @@ import { handleGetContents } from "../../api/requests";
 import { showNotification } from "../../utils/showNotyf";
 import { converterLinkYoutube } from "../../utils/format";
 
-// --- OPÇÕES DE SELEÇÃO ---
 export const backgroundOptions = [
   { value: "cor-solida", label: "Cor Sólida" },
   { value: "imagem-textura", label: "Imagem/Textura" },
@@ -23,7 +22,6 @@ export const temaOptions = [
   { value: "escuro", label: "Escuro" },
 ];
 
-// DADOS DE REFERÊNCIA INICIAL (Estrutura completa e segura)
 const MOCK_DATA_INITIAL = {
   id: 1,
   chave: "mensagemPrincipal",
