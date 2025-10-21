@@ -1,8 +1,12 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { InputSwitch } from "primereact/inputswitch";
+import useApi from "../../hooks/useApi";
+import CurrentDataPreview from "./CurrentDataPreview";
+import { handleGetContents } from "../../api/requests"; // Assumindo que handleGetContents foi corrigida
+import { showNotification } from "../../utils/showNotyf";
 
 // --- OPÇÕES DE SELEÇÃO ---
 export const backgroundOptions = [
@@ -26,48 +30,101 @@ export const temaOptions = [
   { value: "escuro", label: "Escuro" },
 ];
 
-// Simulação de Dados Atuais
-const DADOS_ATUAIS = {
-  palavraEsperanca: "A paz do Senhor Jesus esteja convosco!",
-  textoBiblico: "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna. (João 3:16)",
-  autorFrase: "Apóstolo Paulo",
-  background: "gradiente",
-  louvor: "hino-tradicional",
-  tema: "escuro",
+// DADOS DE REFERÊNCIA INICIAL (Estrutura completa e segura)
+const MOCK_DATA_INITIAL = {
+  id: 1,
+  chave: "mensagemPrincipal",
+  valor: {
+    mensagem: "",
+    versiculo: "",
+    referencia: "",
+    link_louvor: "",
+    background: "",
+    tema: "",
+  },
+  descricao: "Mensagem principal que aparece ao acessar a página via QR Code",
 };
 
 export const FormContent = () => {
   const [showCurrentData, setShowCurrentData] = useState(false);
+  const [apiData, setApiData] = useState(MOCK_DATA_INITIAL);
 
   const toggleShowCurrentData = () => {
     setShowCurrentData(!showCurrentData);
   };
 
+  const {
+    loading: loadingContent,
+    fetchData: fetchContent,
+  } = useApi({ endpoint: "/conteudos/1", method: "GET" });
+
+  const { loading: loadingUpdateContent, fetchData: fetchUpdateContent } =
+    useApi({ endpoint: "=", method: "" });
+
+  useEffect(() => {
+    handleGetContents(fetchContent, setApiData);
+  }, []); 
+
+  const initialValuesFromApi = {
+    palavraEsperanca: apiData?.valor?.mensagem || "",
+    textoBiblico: apiData?.valor?.versiculo || "",
+    referencia: apiData?.valor?.referencia || "",
+    louvor: apiData?.valor?.link_louvor || "",
+    background: apiData?.valor?.background || "",
+    tema: apiData?.valor?.tema || "",
+  };
+
   const formik = useFormik({
-    initialValues: {
-      palavraEsperanca: "",
-      textoBiblico: "",
-      autorFrase: "",
-      background: "",
-      louvor: "",
-      tema: "",
-    },
+    initialValues: initialValuesFromApi,
+    enableReinitialize: true,
     validationSchema: Yup.object({
-      palavraEsperanca: Yup.string().required(
-        "A Palavra de Esperança é obrigatória 🙏"
-      ),
-      textoBiblico: Yup.string().required("O Texto Bíblico é obrigatório 📖"),
-      autorFrase: Yup.string().notRequired(), 
-      background: Yup.string().required("O Background é obrigatório 🎨"),
-      louvor: Yup.string().required("O Louvor é obrigatório"),
-      tema: Yup.string().required("O Tema de Cores é obrigatório"),
+      palavraEsperanca: Yup.string().notRequired(),
+      textoBiblico: Yup.string().notRequired(),
+      referencia: Yup.string().notRequired(),
+      background: Yup.string().notRequired(),
+      louvor: Yup.string().notRequired(),
+      tema: Yup.string().notRequired(),
     }),
-    onSubmit: (values) => {
-      alert(
-        `Mensagem enviada com sucesso! 🙌\n\n${JSON.stringify(values, null, 2)}`
-      );
+    onSubmit: async (formValues) => {
+      const novoValor = {
+        ...apiData.valor,
+        mensagem: formValues.palavraEsperanca,
+        versiculo: formValues.textoBiblico,
+        referencia: formValues.referencia,
+        link_louvor: formValues.louvor,
+        background: formValues.background,
+        tema: formValues.tema,
+      };
+
+      const payload = {
+        id: apiData.id,
+        chave: apiData.chave,
+        valor: novoValor,
+        descricao: apiData.descricao,
+      };
+
+      try {
+        const result = await fetchUpdateContent("/conteudos/1", "PUT", payload);
+        if (result && result.status >= 200 && result.status < 300) {
+          showNotification("success", "Gloria a Deus! Deu tudo certo.");
+        }
+        
+      } catch (error) {
+        console.error("Erro ao atualizar o conteúdo:", error);
+        alert("Erro ao atualizar o conteúdo.");
+      }
     },
   });
+
+  const currentBackgroundLabel =
+    backgroundOptions.find((o) => o.value === apiData?.valor?.background)
+      ?.label ||
+    apiData?.valor?.background ||
+    "";
+  const currentTemaLabel =
+    temaOptions.find((o) => o.value === apiData?.valor?.tema)?.label ||
+    apiData?.valor?.tema ||
+    "";
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -75,23 +132,37 @@ export const FormContent = () => {
         <h2>Formulário Evangelístico ✝️</h2>
       </div>
 
-     <div>
-      <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <InputSwitch checked={showCurrentData} onChange={toggleShowCurrentData} />
-        {showCurrentData ? "Ocultar Dados Atuais" : "Visualizar Dados Atuais 🔎"}
-      </label>
-    </div>
-      
+      <div>
+        <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <InputSwitch
+            checked={showCurrentData}
+            onChange={toggleShowCurrentData}
+          />
+          {showCurrentData
+            ? "Ocultar Dados Atuais"
+            : "Visualizar Dados Atuais 🔎"}
+        </label>
+      </div>
+
       {showCurrentData && (
-        <p style={{ width: '100%', marginBottom: '15px', textAlign: 'center', padding: '10px', border: '1px solid #ccc', borderRadius: '4px'}}>
-         <strong>Dados Atuais (Preview): </strong> Abaixo de cada campo de <strong>Nova Proclamação</strong>, você vê o dado que está atualmente ativo.
+        <p
+          style={{
+            width: "100%",
+            marginBottom: "15px",
+            textAlign: "center",
+            padding: "10px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+          }}
+        >
+          <strong>Dados Atuais (Preview): </strong> Abaixo de cada campo você vê
+          o dado que está atualmente ativo.
         </p>
       )}
 
       <div className="form-group">
-        <label htmlFor="palavraEsperanca">Nova Proclamação: Palavra de Esperança *</label>
-        
-        {/* CAMPO ORIGINAL DE EDIÇÃO/NOVA PROCLAMAÇÃO */}
+        <label htmlFor="palavraEsperanca">Palavra de Esperança *</label>
+
         <input
           id="palavraEsperanca"
           name="palavraEsperanca"
@@ -104,22 +175,18 @@ export const FormContent = () => {
         {formik.touched.palavraEsperanca && formik.errors.palavraEsperanca && (
           <span className="error">{formik.errors.palavraEsperanca}</span>
         )}
-        
-        {/* CAMPO DE DADOS ATUAIS (PREVIEW) - Aparece abaixo, controlado por showCurrentData */}
-        <div className={`current-data-preview ${showCurrentData ? '' : 'hidden'}`}>
-          <label style={{fontSize: '0.85em'}}>Dados Atuais:</label>
-          <input
-            type="text"
-            disabled
-            value={DADOS_ATUAIS.palavraEsperanca}
-            className="preview-input"
-          />
-        </div>
+
+        <CurrentDataPreview
+          label={"mensagem atual:"}
+          value={apiData?.valor?.mensagem || ""}
+          loadingContent={loadingContent}
+          showCurrentData={showCurrentData}
+        />
       </div>
 
       <div className="form-group">
-        <label htmlFor="textoBiblico">Nova Proclamação: Texto Bíblico *</label>
-        
+        <label htmlFor="textoBiblico">Texto Bíblico *</label>
+
         <textarea
           id="textoBiblico"
           name="textoBiblico"
@@ -133,60 +200,56 @@ export const FormContent = () => {
           <span className="error">{formik.errors.textoBiblico}</span>
         )}
 
-        {/* CAMPO DE DADOS ATUAIS (PREVIEW) */}
-        <div className={`current-data-preview ${showCurrentData ? '' : 'hidden'}`}>
-            <label style={{fontSize: '0.85em'}}>Dados Atuais:</label>
-            <textarea
-                rows="4"
-                disabled
-                value={DADOS_ATUAIS.textoBiblico}
-                className="preview-input"
-            ></textarea>
-        </div>
+        <CurrentDataPreview
+          label={"versiculo atual:"}
+          value={apiData?.valor?.versiculo || ""}
+          loadingContent={loadingContent}
+          showCurrentData={showCurrentData}
+          isTextArea={true}
+        />
       </div>
 
       <div className="form-group">
-        <label htmlFor="autorFrase">Nova Proclamação: Autor da Frase (Opcional)</label>
-        
+        <label htmlFor="referencia">Referência Bíblica *</label>
+
         <input
-          id="autorFrase"
-          name="autorFrase"
+          id="referencia"
+          name="referencia"
           type="text"
-          placeholder="Ex: Pr. João"
+          placeholder='Ex: "João 3:16"'
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.autorFrase}
+          value={formik.values.referencia}
         />
-        {formik.touched.autorFrase && formik.errors.autorFrase && (
-          <span className="error">{formik.errors.autorFrase}</span>
+        {formik.touched.referencia && formik.errors.referencia && (
+          <span className="error">{formik.errors.referencia}</span>
         )}
-
-        <div className={`current-data-preview ${showCurrentData ? '' : 'hidden'}`}>
-          <label style={{fontSize: '0.85em'}}>Dados Atuais:</label>
-          <input
-            type="text"
-            disabled
-            value={DADOS_ATUAIS.autorFrase}
-            className="preview-input"
-          />
-        </div>
+        <CurrentDataPreview
+          label={"referência atual:"}
+          value={apiData?.valor?.referencia || ""}
+          loadingContent={loadingContent}
+          showCurrentData={showCurrentData}
+        />
       </div>
 
-
-     
       <div className="form-group">
-        <label htmlFor="background">Nova Proclamação: Background de Fundo *</label>
-        
-        {/* CAMPO ORIGINAL DE EDIÇÃO/NOVA PROCLAMAÇÃO */}
+        <label htmlFor="background">Imagem de Fundo *</label>
+
         <select
           id="background"
           name="background"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.background}
-          className={formik.touched.background && formik.errors.background ? "input-error" : ""}
+          className={
+            formik.touched.background && formik.errors.background
+              ? "input-error"
+              : ""
+          }
         >
-          <option value="" disabled>Selecione uma opção</option>
+          <option value="" disabled>
+            Selecione uma opção
+          </option>
           {backgroundOptions.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -197,68 +260,57 @@ export const FormContent = () => {
           <span className="error">{formik.errors.background}</span>
         )}
 
-        {/* CAMPO DE DADOS ATUAIS (PREVIEW) */}
-        <div className={`current-data-preview ${showCurrentData ? '' : 'hidden'}`}>
-          <label style={{fontSize: '0.85em'}}>Dados Atuais:</label>
-          <input
-            type="text"
-            disabled
-            // Busca o label correspondente ao valor nos DADOS_ATUAIS
-            value={backgroundOptions.find(o => o.value === DADOS_ATUAIS.background)?.label || 'N/A'}
-            className="preview-input"
-          />
-        </div>
+        <CurrentDataPreview
+          label={"imagem de fundo atual:"}
+          value={currentBackgroundLabel}
+          loadingContent={loadingContent}
+          showCurrentData={showCurrentData}
+        />
       </div>
 
       <div className="form-group">
-        <label htmlFor="louvor">Nova Proclamação: Louvor Selecionado *</label>
-        
-        {/* CAMPO ORIGINAL DE EDIÇÃO/NOVA PROCLAMAÇÃO */}
-        <select
+        <label htmlFor="louvor">Link do Louvor *</label>
+
+        <input
+          type="text"
+          placeholder="Link do louvor (do youtube) aqui"
           id="louvor"
           name="louvor"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.louvor}
-          className={formik.touched.louvor && formik.errors.louvor ? "input-error" : ""}
-        >
-          <option value="" disabled>Selecione um Louvor/Estilo</option>
-          {louvorOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+          className={
+            formik.touched.louvor && formik.errors.louvor ? "input-error" : ""
+          }
+        />
         {formik.touched.louvor && formik.errors.louvor && (
           <span className="error">{formik.errors.louvor}</span>
         )}
 
-        {/* CAMPO DE DADOS ATUAIS (PREVIEW) */}
-        <div className={`current-data-preview ${showCurrentData ? '' : 'hidden'}`}>
-          <label style={{fontSize: '0.85em'}}>Dados Atuais:</label>
-          <input
-            type="text"
-            disabled
-            // Busca o label correspondente ao valor nos DADOS_ATUAIS
-            value={louvorOptions.find(o => o.value === DADOS_ATUAIS.louvor)?.label || 'N/A'}
-            className="preview-input"
-          />
-        </div>
+        <CurrentDataPreview
+          label={"link do louvor atual:"}
+          value={apiData?.valor?.link_louvor || ""}
+          loadingContent={loadingContent}
+          showCurrentData={showCurrentData}
+        />
       </div>
 
       <div className="form-group">
-        <label htmlFor="tema">Nova Proclamação: Tema de Cores *</label>
-        
-        {/* CAMPO ORIGINAL DE EDIÇÃO/NOVA PROCLAMAÇÃO */}
+        <label htmlFor="tema">Tema de Cores *</label>
+
         <select
           id="tema"
           name="tema"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.tema}
-          className={formik.touched.tema && formik.errors.tema ? "input-error" : ""}
+          className={
+            formik.touched.tema && formik.errors.tema ? "input-error" : ""
+          }
         >
-          <option value="" disabled>Selecione um Tema</option>
+          <option value="" disabled>
+            Selecione um Tema
+          </option>
           {temaOptions.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -268,21 +320,18 @@ export const FormContent = () => {
         {formik.touched.tema && formik.errors.tema && (
           <span className="error">{formik.errors.tema}</span>
         )}
-        
-        {/* CAMPO DE DADOS ATUAIS (PREVIEW) */}
-        <div className={`current-data-preview ${showCurrentData ? '' : 'hidden'}`}>
-          <label style={{fontSize: '0.85em'}}>Dados Atuais:</label>
-          <input
-            type="text"
-            disabled
-            // Busca o label correspondente ao valor nos DADOS_ATUAIS
-            value={temaOptions.find(o => o.value === DADOS_ATUAIS.tema)?.label || 'N/A'}
-            className="preview-input"
-          />
-        </div>
+
+        <CurrentDataPreview
+          label={"tema atual:"}
+          value={currentTemaLabel}
+          loadingContent={loadingContent}
+          showCurrentData={showCurrentData}
+        />
       </div>
-      
-      <button type="submit">Proclamar a Mensagem 📖</button>
+
+      <button type="submit" disabled={loadingUpdateContent}>
+        {loadingUpdateContent ? "Salvando..." : "Proclamar a Mensagem 📖"}
+      </button>
     </form>
   );
 };
