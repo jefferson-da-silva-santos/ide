@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react"; // Adicionado useCallback
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { InputSwitch } from "primereact/inputswitch";
@@ -44,17 +44,21 @@ export const FormContent = () => {
     setShowCurrentData(!showCurrentData);
   };
 
-  const {
-    loading: loadingContent,
-    fetchData: fetchContent,
-  } = useApi({ endpoint: "/conteudos/1", method: "GET" });
+  const { loading: loadingContent, fetchData: fetchContent } = useApi({
+    endpoint: "/conteudos/1",
+    method: "GET",
+  });
 
   const { loading: loadingUpdateContent, fetchData: fetchUpdateContent } =
     useApi({ endpoint: "", method: "" });
 
-  useEffect(() => {
+  const getInitialData = useCallback(() => {
     handleGetContents(fetchContent, setApiData);
-  }, []); 
+  }, [fetchContent]); 
+
+  useEffect(() => {
+    getInitialData();
+  }, [getInitialData]);
 
   const initialValuesFromApi = {
     palavraEsperanca: apiData?.valor?.mensagem || "",
@@ -67,7 +71,7 @@ export const FormContent = () => {
 
   const formik = useFormik({
     initialValues: initialValuesFromApi,
-    enableReinitialize: true,
+    enableReinitialize: true, 
     validationSchema: Yup.object({
       palavraEsperanca: Yup.string().notRequired(),
       textoBiblico: Yup.string().notRequired(),
@@ -94,36 +98,41 @@ export const FormContent = () => {
       };
 
       try {
-        const result = await fetchUpdateContent(`/conteudos/${apiData.id}`, "PUT", payload);
+        const result = await fetchUpdateContent(
+          `/conteudos/${apiData.id}`,
+          "PUT",
+          payload
+        );
         if (result && result.status >= 200 && result.status < 300) {
-          showNotification("success", "Gloria a Deus! Deu tudo certo.");
+          showNotification("success", "Gloria a Deus! Deu tudo certo."); // 2. CHAMADA CRÍTICA: RECARREGAR OS DADOS APÓS O SUCESSO
+          await getInitialData(); // Chama a função para buscar os dados novamente // O `apiData` será atualizado, e o `formik` será reinicializado via `enableReinitialize: true`.
         }
-        
       } catch (error) {
         showNotification("error", "Ocorreu um erro ao atualizar o conteúdo.");
         console.error("Erro ao atualizar o conteúdo:", error);
       }
     },
-  });
+  }); // ... (Restante do componente de renderização permanece igual)
 
   return (
     <form onSubmit={formik.handleSubmit}>
+      {" "}
       <div className="header-form">
-        <h2>Formulário Evangelístico ✝️</h2>
-      </div>
-
+        <h2>Formulário Evangelístico ✝️</h2>{" "}
+      </div>{" "}
       <div>
+        {" "}
         <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          {" "}
           <InputSwitch
             checked={showCurrentData}
             onChange={toggleShowCurrentData}
-          />
+          />{" "}
           {showCurrentData
             ? "Ocultar Dados Atuais"
-            : "Visualizar Dados Atuais 🔎"}
-        </label>
-      </div>
-
+            : "Visualizar Dados Atuais 🔎"}{" "}
+        </label>{" "}
+      </div>{" "}
       {showCurrentData && (
         <p
           style={{
@@ -135,14 +144,12 @@ export const FormContent = () => {
             borderRadius: "4px",
           }}
         >
-          Dados Atuais (Preview): Abaixo de cada campo você vê
-          o dado que está atualmente ativo.
+          Dados Atuais (Preview): Abaixo de cada campo você vê o dado que está
+          atualmente ativo.{" "}
         </p>
-      )}
-
+      )}{" "}
       <div className="form-group">
-        <label htmlFor="palavraEsperanca">Palavra de Esperança *</label>
-
+        <label htmlFor="palavraEsperanca">Palavra de Esperança *</label>{" "}
         <input
           id="palavraEsperanca"
           name="palavraEsperanca"
@@ -151,22 +158,19 @@ export const FormContent = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.palavraEsperanca}
-        />
+        />{" "}
         {formik.touched.palavraEsperanca && formik.errors.palavraEsperanca && (
           <span className="error">{formik.errors.palavraEsperanca}</span>
-        )}
-
+        )}{" "}
         <CurrentDataPreview
           label={"mensagem atual:"}
           value={apiData?.valor?.mensagem || ""}
           loadingContent={loadingContent}
           showCurrentData={showCurrentData}
-        />
-      </div>
-
+        />{" "}
+      </div>{" "}
       <div className="form-group">
-        <label htmlFor="textoBiblico">Texto Bíblico *</label>
-
+        <label htmlFor="textoBiblico">Texto Bíblico *</label>{" "}
         <textarea
           id="textoBiblico"
           name="textoBiblico"
@@ -175,23 +179,20 @@ export const FormContent = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.textoBiblico}
-        ></textarea>
+        ></textarea>{" "}
         {formik.touched.textoBiblico && formik.errors.textoBiblico && (
           <span className="error">{formik.errors.textoBiblico}</span>
-        )}
-
+        )}{" "}
         <CurrentDataPreview
           label={"versiculo atual:"}
           value={apiData?.valor?.versiculo || ""}
           loadingContent={loadingContent}
           showCurrentData={showCurrentData}
           isTextArea={true}
-        />
-      </div>
-
+        />{" "}
+      </div>{" "}
       <div className="form-group">
-        <label htmlFor="referencia">Referência Bíblica *</label>
-
+        <label htmlFor="referencia">Referência Bíblica *</label>{" "}
         <input
           id="referencia"
           name="referencia"
@@ -200,21 +201,19 @@ export const FormContent = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.referencia}
-        />
+        />{" "}
         {formik.touched.referencia && formik.errors.referencia && (
           <span className="error">{formik.errors.referencia}</span>
-        )}
+        )}{" "}
         <CurrentDataPreview
           label={"referência atual:"}
           value={apiData?.valor?.referencia || ""}
           loadingContent={loadingContent}
           showCurrentData={showCurrentData}
-        />
-      </div>
-
+        />{" "}
+      </div>{" "}
       <div className="form-group">
-        <label htmlFor="background">Imagem de Fundo *</label>
-
+        <label htmlFor="background">Imagem de Fundo *</label>{" "}
         <select
           id="background"
           name="background"
@@ -227,30 +226,28 @@ export const FormContent = () => {
               : ""
           }
         >
+          {" "}
           <option value="" disabled>
-            Selecione uma opção
-          </option>
+            Selecione uma opção{" "}
+          </option>{" "}
           {backgroundOptions.map((option) => (
             <option key={option.value} value={option.value}>
-              {option.label}
+              {option.label}{" "}
             </option>
-          ))}
-        </select>
+          ))}{" "}
+        </select>{" "}
         {formik.touched.background && formik.errors.background && (
           <span className="error">{formik.errors.background}</span>
-        )}
-
+        )}{" "}
         <CurrentDataPreview
           label={"imagem de fundo atual:"}
           value={apiData?.valor?.background || ""}
           loadingContent={loadingContent}
           showCurrentData={showCurrentData}
-        />
-      </div>
-
+        />{" "}
+      </div>{" "}
       <div className="form-group">
-        <label htmlFor="louvor">Link do Louvor *</label>
-
+        <label htmlFor="louvor">Link do Louvor *</label>{" "}
         <input
           type="text"
           placeholder="Link do louvor (do youtube) aqui"
@@ -262,22 +259,19 @@ export const FormContent = () => {
           className={
             formik.touched.louvor && formik.errors.louvor ? "input-error" : ""
           }
-        />
+        />{" "}
         {formik.touched.louvor && formik.errors.louvor && (
           <span className="error">{formik.errors.louvor}</span>
-        )}
-
+        )}{" "}
         <CurrentDataPreview
           label={"link do louvor atual:"}
           value={apiData?.valor?.link_louvor || ""}
           loadingContent={loadingContent}
           showCurrentData={showCurrentData}
-        />
-      </div>
-
+        />{" "}
+      </div>{" "}
       <div className="form-group">
-        <label htmlFor="tema">Tema de Cores *</label>
-
+        <label htmlFor="tema">Tema de Cores *</label>{" "}
         <select
           id="tema"
           name="tema"
@@ -288,30 +282,30 @@ export const FormContent = () => {
             formik.touched.tema && formik.errors.tema ? "input-error" : ""
           }
         >
+          {" "}
           <option value="" disabled>
-            Selecione um Tema
-          </option>
+            Selecione um Tema{" "}
+          </option>{" "}
           {temaOptions.map((option) => (
             <option key={option.value} value={option.value}>
-              {option.label}
+              {option.label}{" "}
             </option>
-          ))}
-        </select>
+          ))}{" "}
+        </select>{" "}
         {formik.touched.tema && formik.errors.tema && (
           <span className="error">{formik.errors.tema}</span>
-        )}
-
+        )}{" "}
         <CurrentDataPreview
           label={"tema atual:"}
           value={apiData?.valor?.tema || ""}
           loadingContent={loadingContent}
           showCurrentData={showCurrentData}
-        />
-      </div>
-
+        />{" "}
+      </div>{" "}
       <button type="submit" disabled={loadingUpdateContent}>
-        {loadingUpdateContent ? "Salvando..." : "Proclamar a Mensagem 📖"}
-      </button>
+        {" "}
+        {loadingUpdateContent ? "Salvando..." : "Proclamar a Mensagem 📖"}{" "}
+      </button>{" "}
     </form>
   );
 };
