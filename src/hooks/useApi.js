@@ -6,7 +6,7 @@ const useApi = ({
   method = "GET",
   body = null,
   headers = {},
-  params = {}
+  params = {},
 }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -28,18 +28,37 @@ const useApi = ({
         method: met,
         data: bod,
         headers: head,
-        params: par
+        params: par,
       });
 
       if (response.status >= 200 && response.status < 300) {
-        setData(response.data.data);
+        setData(response.data?.data || response.data);
       } else {
-        setError(response);
+        const msgErro =
+          response.data?.error ||
+          "Erro inesperado na resposta do servidor.";
+        setError(msgErro);
       }
 
       return response;
-    } catch (error) {
-      setError(error.response?.data.data.error || error.message);
+    } catch (err) {
+      console.error("Erro na requisição:", err);
+
+      // Evita quebra caso algum campo esteja ausente
+      const msgErro =
+        err?.response?.data?.error ||
+        err?.response?.data ||
+        err?.message ||
+        "Erro desconhecido ao comunicar com o servidor.";
+
+      setError(msgErro);
+
+      // Retorna um objeto padronizado mesmo em erro
+      return {
+        status: err?.response?.status || 500,
+        data: { error: msgErro },
+        error: true,
+      };
     } finally {
       setLoading(false);
     }

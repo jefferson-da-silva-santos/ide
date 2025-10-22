@@ -17,10 +17,10 @@
     font-size: 2.5rem;
   }
 
-      .ide-player iframe {
-        max-width: 331px;
-        height: 180px;
-    }
+  .ide-player iframe {
+    max-width: 331px;
+    height: 180px;
+  }
 }
 
 @include mediaHeight(742px) {

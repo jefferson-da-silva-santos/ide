@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import L_logo from '../../assets/image/L_logo.png';
+import L_logo from "../../assets/image/L_logo.png";
 import useAuth from "../../hooks/useAuth";
 import { formatDataLogin } from "../../utils/format";
 import { useNavigate } from "react-router-dom";
@@ -10,12 +10,13 @@ export const Login = () => {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [showFormForgotPassword, setShowFormForgotPassword] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const { login, loadingLogin, isAuthenticated } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/home"); 
+      navigate("/home");
     }
   }, [isAuthenticated, navigate]);
 
@@ -44,97 +45,141 @@ export const Login = () => {
         .required("A senha é obrigatória"),
     }),
     onSubmit: async (values) => {
-      console.log(values);
-      await login(formatDataLogin(values));
+      setLoading(true);
+      try {
+        await login(formatDataLogin(values));
+      } catch (error) {
+        console.error("Erro ao fazer login:", error);
+      } finally {
+        setLoading(false);
+      }
     },
   });
 
   return (
     <>
-    {!isAuthenticated && (
-      <div className="container-login">
-      <section className="wrapper">
-        <section className={`col $ ${!showFormForgotPassword && !isMobile ? 'col1-login-class' : 'col1-forgot-class'}`}></section>
-        <section className={`col ${!showFormForgotPassword && !isMobile ? 'col2-login-class' : 'col2-forgot-class'}`}>
-          <h1 className="title">{!showFormForgotPassword ? (
-            <div className="title-login">
-              <img className="logo" src={L_logo} alt="" />
-              <span>ogin</span>
-            </div>
-          ) : "Recuperar senha"}</h1>
-          {!showFormForgotPassword && (
-             <form className="form" onSubmit={formik.handleSubmit}>
-            <label>
-              <span>Email</span>
-              <input
-                type="email"
-                name="email"
-                placeholder="Aqui é o seu email"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.email}
-              />
-              {formik.touched.email && formik.errors.email && (
-                <small className="erro">{formik.errors.email}</small>
+      {!isAuthenticated && (
+        <div className="container-login">
+          <section className="wrapper">
+            <section
+              className={`col $ ${
+                !showFormForgotPassword && !isMobile
+                  ? "col1-login-class"
+                  : "col1-forgot-class"
+              }`}
+            ></section>
+            <section
+              className={`col ${
+                !showFormForgotPassword && !isMobile
+                  ? "col2-login-class"
+                  : "col2-forgot-class"
+              }`}
+            >
+              <h1 className="title">
+                {!showFormForgotPassword ? (
+                  <div className="title-login">
+                    <img className="logo" src={L_logo} alt="" />
+                    <span>ogin</span>
+                  </div>
+                ) : (
+                  "Recuperar senha"
+                )}
+              </h1>
+              {!showFormForgotPassword && (
+                <form className="form" onSubmit={formik.handleSubmit}>
+                  <label>
+                    <span>Email</span>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Aqui é o seu email"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.email}
+                    />
+                    {formik.touched.email && formik.errors.email && (
+                      <small className="erro">{formik.errors.email}</small>
+                    )}
+                  </label>
+
+                  <label>
+                    <span>Password</span>
+                    <div className="input-password">
+                      <input
+                        type={mostrarSenha ? "text" : "password"}
+                        name="password"
+                        placeholder="Aqui é a sua senha"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.password}
+                      />
+                      <button
+                        className="button-hide-password"
+                        type="button"
+                        onClick={() => setMostrarSenha(!mostrarSenha)}
+                      >
+                        <i
+                          className={`bx ${
+                            mostrarSenha ? "bx-show" : "bx-hide"
+                          }`}
+                        ></i>
+                      </button>
+                    </div>
+                    {formik.touched.password && formik.errors.password && (
+                      <small className="erro">{formik.errors.password}</small>
+                    )}
+                  </label>
+
+                  <small
+                    className="forgot-password"
+                    onClick={() =>
+                      setShowFormForgotPassword(!showFormForgotPassword)
+                    }
+                  >
+                    Esqueceu sua senha? Confie e siga em frente.
+                  </small>
+
+                  <button className="btn-login" type="submit">
+                    {loading ? (
+                     <i style={{fontSize: '1.5rem'}} className='bx bx-loader-circle bx-spin' ></i>
+                    ) : "Entrar"}
+                  </button>
+                </form>
               )}
-            </label>
+              {showFormForgotPassword && (
+                <form className="form">
+                  <label>
+                    <span>Confirme seu e-mail</span>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Aqui é o seu email"
+                    />
+                  </label>
 
-            <label>
-              <span>Password</span>
-              <div className="input-password">
-                <input
-                  type={mostrarSenha ? "text" : "password"}
-                  name="password"
-                  placeholder="Aqui é a sua senha"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.password}
-                />
-                <button
-                  className="button-hide-password"
-                  type="button"
-                  onClick={() => setMostrarSenha(!mostrarSenha)}
-                >
-                  <i className={`bx ${mostrarSenha ? "bx-show" : "bx-hide"}`}></i>
-                </button>
-              </div>
-              {formik.touched.password && formik.errors.password && (
-                <small className="erro">{formik.errors.password}</small>
+                  <small
+                    className="forgot-password"
+                    onClick={() =>
+                      setShowFormForgotPassword(!showFormForgotPassword)
+                    }
+                  >
+                    Voltar para área de login
+                  </small>
+                  <button
+                    className="btn-login"
+                    type="submit"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                     <i style={{fontSize: '1.5rem'}} className='bx bx-loader-circle bx-spin' ></i>
+                    ) : "Recuperar senha"}
+                  </button>
+                </form>
               )}
-            </label>
-
-            <small className="forgot-password" onClick={() => setShowFormForgotPassword(!showFormForgotPassword)}>
-              Esqueceu sua senha? Confie e siga em frente.
-            </small>
-
-            <button className="btn-login" type="submit">
-              Entrar
-            </button>
-          </form>
-          )}
-          {showFormForgotPassword && (
-            <form className="form">
-              <label>
-                <span>Confirme seu e-mail</span>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Aqui é o seu email"
-                />
-              </label>
-
-              <small className="forgot-password" onClick={() => setShowFormForgotPassword(!showFormForgotPassword)}>
-                Voltar para área de login
-              </small>
-              <button className="btn-login" type="submit">
-                {!showFormForgotPassword ? loadingLogin ? "Carregando..." : "Entrar" : "Recuperar senha"}
-              </button>
-            </form>
-          )}
-        </section>
-      </section>
-    </div>
-    )}
+            </section>
+          </section>
+        </div>
+      )}
     </>
   );
 };

@@ -40,6 +40,12 @@ const AuthProvider = ({ children }) => {
     try {
       const result = await fetchLogin("/usuarios/login", "POST", data);
 
+      if (result?.error) {
+        const mensagemErro = result?.data?.error || "Falha ao fazer login.";
+        showNotification("error", mensagemErro);
+        return;
+      }
+
       if (result && result.status === 200 && result.data) {
         showNotification("success", "Login realizado com sucesso");
 
@@ -55,10 +61,18 @@ const AuthProvider = ({ children }) => {
 
         navigate("/home");
       } else {
-        showNotification("error", "Usuário ou senha inválidos");
+        const mensagemErro =
+          result?.data?.error || "Erro inesperado ao tentar fazer login.";
+        showNotification("error", mensagemErro);
       }
     } catch (error) {
-      showNotification("error", `Erro ao fazer login: ${error.message}`);
+      console.error("Erro ao fazer login:", error);
+
+      const mensagemErro =
+        error?.response?.data?.error ||
+        error?.message ||
+        "Erro desconhecido ao tentar fazer login.";
+      showNotification("error", mensagemErro);
     }
   }
 
