@@ -5,7 +5,7 @@ import useMenu from "../../hooks/useMenu";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
-export const Home = () => {
+export const Home = ({ children}) => {
   const { toggleMenu } = useMenu();
   const { user } = useAuth()
 
@@ -28,7 +28,7 @@ export const Home = () => {
         </div>
       </header>
       <main className="main-home">
-        <FormContent />
+        { children }
       </main>
       <Footer />
     </div>

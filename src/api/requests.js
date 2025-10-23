@@ -68,3 +68,46 @@ export const handleUpdateContent = async (
     showNotification("error", mensagemErro);
   }
 }
+
+export const handleGetInvitation = async (
+  fetchContent,
+  setInvitation
+) => {
+  try {
+    const result = await fetchContent();
+    console.log(result);
+    
+    if (!result || result.error) {
+      const mensagemErro = result?.data?.error || "Falha na comunicação com o servidor.";
+      showNotification("error", mensagemErro);
+      return;
+    }
+
+    if (result.status >= 200 && result.status < 300 && result.data?.sucesso) {
+      const linkConvite = result.data.data.link; 
+
+      showNotification("success", "Convite gerado com sucesso!");
+      console.log("Link de Convite:", linkConvite);
+
+      setInvitation(linkConvite);
+      return; 
+    }
+
+    else {
+      const mensagemErro =
+        result.data?.error ||
+        result.data?.mensagem ||
+        "Erro inesperado ao gerar o convite.";
+
+      showNotification("error", mensagemErro);
+    }
+
+  } catch (error) {
+    console.error("Erro ao carregar o convite:", error);
+    const mensagemErro =
+      error?.response?.data?.error ||
+      error?.message ||
+      "Erro desconhecido ao tentar carregar o convite.";
+    showNotification("error", mensagemErro);
+  }
+}

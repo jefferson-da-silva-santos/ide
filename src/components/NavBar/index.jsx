@@ -7,7 +7,7 @@ import useAuth from "../../hooks/useAuth";
 const NavBar = () => {
   const { isMenuOpen, toggleMenu } = useMenu();
   const [classMenu, setClassMenu] = useState("close-menu");
-   const { logout } = useAuth();
+  const { logout } = useAuth();
 
   useEffect(() => {
     setClassMenu(isMenuOpen ? "open-menu" : "close-menu");
@@ -22,15 +22,25 @@ const NavBar = () => {
         alt="Logo do Banner da Aplicação"
       />
 
-      <button className="close-nav" onClick={toggleMenu} style={{ display: isMenuOpen ? 'flex' : 'none' }}>
+      <button
+        className="close-nav"
+        onClick={toggleMenu}
+        style={{ display: isMenuOpen ? "flex" : "none" }}
+      >
         <i className="bx bx-x"></i>
       </button>
 
       <ul className="navbar-list">
         <li className="navbar-item">
           <i className="bx bx-home"></i>
-          <Link className="navbar-link" to="/">
+          <Link className="navbar-link" to="/home">
             Home
+          </Link>
+        </li>
+        <li className="navbar-item">
+          <i className="bx bx-user"></i>
+          <Link className="navbar-link" to="/invitation">
+            Convidar
           </Link>
         </li>
         <li className="navbar-item">

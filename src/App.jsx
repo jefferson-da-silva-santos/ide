@@ -5,6 +5,8 @@ import { Login } from "./pages/Login";
 import MenuProvider from "./providers/MenuProvider";
 import AuthProvider from "./providers/AuthProvider";
 import PrivateRouter from "./router/PrivateRouter";
+import { FormContent } from "./components/FormContent";
+import Invitation from "./pages/invitation";
 
 function App() {
   return (
@@ -17,7 +19,15 @@ function App() {
               path="/home"
               element={
                 <PrivateRouter>
-                  <Home />
+                  <Home children={<FormContent />} />
+                </PrivateRouter>
+              }
+            />
+            <Route
+              path="/invitation"
+              element={
+                <PrivateRouter>
+                  <Home children={<Invitation />} />
                 </PrivateRouter>
               }
             />
