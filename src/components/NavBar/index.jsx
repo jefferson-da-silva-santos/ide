@@ -31,19 +31,19 @@ const NavBar = () => {
       </button>
 
       <ul className="navbar-list">
-        <li className="navbar-item">
+        <li className="navbar-item" onClick={toggleMenu}>
           <i className="bx bx-home"></i>
           <Link className="navbar-link" to="/home">
             Home
           </Link>
         </li>
-        <li className="navbar-item">
+        <li className="navbar-item" onClick={toggleMenu}>
           <i className="bx bx-user"></i>
           <Link className="navbar-link" to="/invitation">
             Convidar
           </Link>
         </li>
-        <li className="navbar-item">
+        <li className="navbar-item" onClick={toggleMenu}>
           <i className="bx bx-log-out"></i>
           <Link className="navbar-link" to="/login" onClick={logout}>
             Sair
