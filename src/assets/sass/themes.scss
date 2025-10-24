@@ -1,7 +1,69 @@
+/*===============(DARK THEME)===============*/
+
 .dark-ide-overlay-father {
-   background-color: rgba(0, 0, 0, 0.764);
+  background-color: rgba(0, 0, 0, 0.764);
 }
 
+.dark-ide-title {
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.dark-ide-title .typed-cursor {
+  color: #ffd700;
+}
+
+.dark-ide-verse {
+   color: #e0e0e0;
+}
+
+.dark-ide-reference {
+  color: #e0e0e0;
+}
+
+.dark-ide-louvor {
+  color: #e0e0e0;
+}
+
+.dark-ide-link {
+   background-color: #ffd700;
+
+  i {
+    color: #000000;
+  }
+}
+
+/*===============(LIGHT THEME)===============*/
+
 .light-ide-overlay-father {
-   background-color: rgba(255, 255, 255, 0.764);
+  background-color: rgba(255, 255, 255, 0.764);
+}
+
+.light-ide-title {
+  color: #006196;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 0.403);
+}
+
+.light-ide-title .typed-cursor {
+  color: #006196;
+}
+
+.light-ide-verse {
+  color: #000000;
+}
+
+.light-ide-reference {
+  color: #000000;
+}
+
+.light-ide-louvor {
+  color: #000000;
+}
+
+.light-ide-link {
+   background-color: #003e5f;
+
+  i {
+    color: #ffffff;
+  }
 }

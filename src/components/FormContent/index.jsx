@@ -8,33 +8,8 @@ import CurrentDataPreview from "./CurrentDataPreview";
 import { handleGetContents } from "../../api/requests";
 import { showNotification } from "../../utils/showNotyf";
 import { converterLinkYoutube } from "../../utils/format";
-
-export const backgroundOptions = [
-  { value: "cor-solida", label: "Cor Sólida" },
-  { value: "imagem-textura", label: "Imagem/Textura" },
-  { value: "gradiente", label: "Gradiente Suave" },
-  { value: "tema-padrao", label: "Tema Padrão do Sistema" },
-  { value: "https://scontent.cdninstagram.com/v/t51.75761-15/474548298_18343645135194850_681295967062939706_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzU1MDQ1NDEyOTgwMzgyNjU4NA%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTA4MC5zZHIuQzMifQ%3D%3D&_nc_ohc=Z4zjirieUHQQ7kNvwED5YaE&_nc_oc=AdmkrNVJHUB-zkob7Ph9DcLl74SCMiJVh0G1Ky4qksy4mvsGZZckfwkycWhIw5OCifk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=OVmBiosjR6_aovBMq_qT1g&oh=00_AfeeA7dmS-fMUT4xyujumhDzk69bOvtj2oofSZF3X0ltiw&oe=68F1CABC", label: "Cruzada na Praça" },
-];
-
-export const temaOptions = [
-  { value: "light", label: "Claro" },
-  { value: "dark", label: "Escuro" },
-];
-
-const MOCK_DATA_INITIAL = {
-  id: 1,
-  chave: "mensagemPrincipal",
-  valor: {
-    mensagem: "",
-    versiculo: "",
-    referencia: "",
-    link_louvor: "",
-    background: "",
-    tema: "",
-  },
-  descricao: "Mensagem principal que aparece ao acessar a página via QR Code",
-};
+import { backgroundOptions, initialValuesFromApi, MOCK_DATA_INITIAL, temaOptions } from "../../utils/constants";
+import validationSchemaIDE from "../../utils/validations";
 
 export const FormContent = () => {
   const [showCurrentData, setShowCurrentData] = useState(false);
@@ -56,26 +31,10 @@ export const FormContent = () => {
     handleGetContents(fetchContent, setApiData);
   }, []); 
 
-  const initialValuesFromApi = {
-    palavraEsperanca: apiData?.valor?.mensagem || "",
-    textoBiblico: apiData?.valor?.versiculo || "",
-    referencia: apiData?.valor?.referencia || "",
-    louvor: apiData?.valor?.link_louvor || "",
-    background: apiData?.valor?.background || "",
-    tema: apiData?.valor?.tema || "",
-  };
-
   const formik = useFormik({
-    initialValues: initialValuesFromApi,
+    initialValues: initialValuesFromApi(apiData),
     enableReinitialize: true,
-    validationSchema: Yup.object({
-      palavraEsperanca: Yup.string().notRequired(),
-      textoBiblico: Yup.string().notRequired(),
-      referencia: Yup.string().notRequired(),
-      background: Yup.string().notRequired(),
-      louvor: Yup.string().notRequired(),
-      tema: Yup.string().notRequired(),
-    }),
+    validationSchema: validationSchemaIDE,
     onSubmit: async (formValues) => {
       const novoValor = {
         ...apiData.valor,
@@ -94,11 +53,14 @@ export const FormContent = () => {
       };
 
       try {
-        const result = await fetchUpdateContent(`/conteudos/${apiData.id}`, "PUT", payload);
+        const result = await fetchUpdateContent(
+          `/conteudos/${apiData.id}`,
+          "PUT",
+          payload
+        );
         if (result && result.status >= 200 && result.status < 300) {
           showNotification("success", "Gloria a Deus! Deu tudo certo.");
         }
-        
       } catch (error) {
         showNotification("error", "Ocorreu um erro ao atualizar o conteúdo.");
         console.error("Erro ao atualizar o conteúdo:", error);

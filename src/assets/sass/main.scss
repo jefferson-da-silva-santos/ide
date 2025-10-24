@@ -223,7 +223,7 @@
 .ide-container {
   background-size: cover;
   background-position: center;
-  height: 100vh; /* Ocupa a altura total da viewport */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -275,24 +275,26 @@
     right: 1rem;
     padding: 0.5rem;
     border-radius: 50%;
-    background-color: #ffd700;
     cursor: pointer;
     animation: animationButton 2s infinite;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
 
-    
-
     i {
       font-size: 2rem;
-      color: #000;
     }
   }
+}
+
+.ide-louvor {
+  font-size: 1.1em;
+  font-weight: 600;
 }
 
 .ide-overlay-father {
   position: absolute;
   top: 0;
   left: 0;
+  padding: 0 1rem;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -300,15 +302,11 @@
   align-items: center;
 }
 
-
-
 .ide-title {
   font-family: "Oswald", sans-serif;
   font-size: 3.5em;
   margin-bottom: 1rem;
   line-height: 1.2;
-  color: #ffd700; /* Cor dourada para o título */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .ide-verse {
@@ -317,7 +315,6 @@
   margin-bottom: 1rem;
   line-height: 1.5;
   font-style: italic;
-  color: #e0e0e0;
 }
 
 .ide-reference {
@@ -329,7 +326,6 @@
 
 
 .typed-cursor {
-  color: #ffd700; /* ou a cor do teu tema */
   animation: blink 1s infinite;
 }
 

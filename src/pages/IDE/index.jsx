@@ -26,20 +26,25 @@ export const IDE = () => {
   const { mensagem, versiculo, referencia, link_louvor, background, tema } = content;
 
   return (
-    <div className={`ide-container ${tema}-theme`} style={
-      {
-        backgroundImage: `url(${background})`
-      }
-    }> 
+    <div
+      className={`ide-container ${tema}-theme`}
+      style={{
+        backgroundImage: `url(${background})`,
+      }}
+    >
       <Link className="ide-link-login" target="_blank" to={"/login"}></Link>
 
-      <Link className="ide-link" to={"https://www.instagram.com/ieadpecedro"} target="_blank">
+      <Link
+        className={`ide-link ${tema}-ide-link`}
+        to={"https://www.instagram.com/ieadpecedro"}
+        target="_blank"
+      >
         <i className="bx bxl-instagram"></i>
       </Link>
 
       <div className={`ide-overlay-father ${tema}-ide-overlay-father`}>
         <div className="ide-overlay">
-          <h1 className="ide-title">
+          <h1 className={`ide-title ${tema}-ide-title`}>
             <ReactTyped
               strings={[mensagem]}
               typeSpeed={50}
@@ -50,16 +55,20 @@ export const IDE = () => {
             />
           </h1>
 
-          <p className="ide-verse">
+          <p className={`ide-verse ${tema}-ide-verse`}>
             {versiculo}
             <br />
-            <span className="ide-reference">{referencia}</span>
+            <span className={`ide-reference ${tema}-ide-reference`}>
+              {referencia}
+            </span>
           </p>
           <div className="ide-player">
-            <p>🎵 Um louvor para o seu coração:</p>
+            <p className={`ide-louvor ${tema}-ide-louvor`}>
+              🎵 Um louvor para o seu coração:
+            </p>
             <iframe
               title="Música Gospel - Jesus"
-              src={link_louvor || ""} 
+              src={link_louvor || ""}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

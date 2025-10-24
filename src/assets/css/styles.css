@@ -230,7 +230,7 @@
 .ide-container {
   background-size: cover;
   background-position: center;
-  height: 100vh; /* Ocupa a altura total da viewport */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -281,20 +281,24 @@
   right: 1rem;
   padding: 0.5rem;
   border-radius: 50%;
-  background-color: #ffd700;
   cursor: pointer;
   animation: animationButton 2s infinite;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
 }
 .ide-container .ide-link i {
   font-size: 2rem;
-  color: #000;
+}
+
+.ide-louvor {
+  font-size: 1.1em;
+  font-weight: 600;
 }
 
 .ide-overlay-father {
   position: absolute;
   top: 0;
   left: 0;
+  padding: 0 1rem;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -307,8 +311,6 @@
   font-size: 3.5em;
   margin-bottom: 1rem;
   line-height: 1.2;
-  color: #ffd700; /* Cor dourada para o título */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .ide-verse {
@@ -317,7 +319,6 @@
   margin-bottom: 1rem;
   line-height: 1.5;
   font-style: italic;
-  color: #e0e0e0;
 }
 
 .ide-reference {
@@ -327,7 +328,6 @@
 }
 
 .typed-cursor {
-  color: #ffd700; /* ou a cor do teu tema */
   animation: blink 1s infinite;
 }
 
@@ -770,12 +770,70 @@
   cursor: default; /* Mostra que não é clicável */
 }
 
+/*===============(DARK THEME)===============*/
 .dark-ide-overlay-father {
   background-color: rgba(0, 0, 0, 0.764);
 }
 
+.dark-ide-title {
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.dark-ide-title .typed-cursor {
+  color: #ffd700;
+}
+
+.dark-ide-verse {
+  color: #e0e0e0;
+}
+
+.dark-ide-reference {
+  color: #e0e0e0;
+}
+
+.dark-ide-louvor {
+  color: #e0e0e0;
+}
+
+.dark-ide-link {
+  background-color: #ffd700;
+}
+.dark-ide-link i {
+  color: #000000;
+}
+
+/*===============(LIGHT THEME)===============*/
 .light-ide-overlay-father {
   background-color: rgba(255, 255, 255, 0.764);
+}
+
+.light-ide-title {
+  color: #006196;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 0.403);
+}
+
+.light-ide-title .typed-cursor {
+  color: #006196;
+}
+
+.light-ide-verse {
+  color: #000000;
+}
+
+.light-ide-reference {
+  color: #000000;
+}
+
+.light-ide-louvor {
+  color: #000000;
+}
+
+.light-ide-link {
+  background-color: #003e5f;
+}
+.light-ide-link i {
+  color: #ffffff;
 }
 
 @keyframes imgBanner {
