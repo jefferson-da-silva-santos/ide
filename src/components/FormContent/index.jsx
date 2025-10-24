@@ -14,12 +14,12 @@ export const backgroundOptions = [
   { value: "imagem-textura", label: "Imagem/Textura" },
   { value: "gradiente", label: "Gradiente Suave" },
   { value: "tema-padrao", label: "Tema Padrão do Sistema" },
-  { value: "fundo-animado", label: "Fundo Animado (Vídeo)" },
+  { value: "https://scontent.cdninstagram.com/v/t51.75761-15/474548298_18343645135194850_681295967062939706_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzU1MDQ1NDEyOTgwMzgyNjU4NA%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTA4MC5zZHIuQzMifQ%3D%3D&_nc_ohc=Z4zjirieUHQQ7kNvwED5YaE&_nc_oc=AdmkrNVJHUB-zkob7Ph9DcLl74SCMiJVh0G1Ky4qksy4mvsGZZckfwkycWhIw5OCifk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=OVmBiosjR6_aovBMq_qT1g&oh=00_AfeeA7dmS-fMUT4xyujumhDzk69bOvtj2oofSZF3X0ltiw&oe=68F1CABC", label: "Cruzada na Praça" },
 ];
 
 export const temaOptions = [
-  { value: "claro", label: "Claro" },
-  { value: "escuro", label: "Escuro" },
+  { value: "light", label: "Claro" },
+  { value: "dark", label: "Escuro" },
 ];
 
 const MOCK_DATA_INITIAL = {

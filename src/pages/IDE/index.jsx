@@ -23,17 +23,21 @@ export const IDE = () => {
       );
   }
 
-  const { mensagem, versiculo, referencia, link_louvor, tema } = content;
+  const { mensagem, versiculo, referencia, link_louvor, background, tema } = content;
 
   return (
-    <div className={`ide-container ${tema}-theme`}> 
+    <div className={`ide-container ${tema}-theme`} style={
+      {
+        backgroundImage: `url(${background})`
+      }
+    }> 
       <Link className="ide-link-login" target="_blank" to={"/login"}></Link>
 
       <Link className="ide-link" to={"https://www.instagram.com/ieadpecedro"} target="_blank">
         <i className="bx bxl-instagram"></i>
       </Link>
 
-      <div className="ide-overlay-father">
+      <div className={`ide-overlay-father ${tema}-ide-overlay-father`}>
         <div className="ide-overlay">
           <h1 className="ide-title">
             <ReactTyped
