@@ -27,8 +27,10 @@ export const backgroundOptions = [
 
 
 export const temaOptions = [
-  { value: "light", label: "Claro" },
-  { value: "dark", label: "Escuro" },
+  { value: "light", label: "Claro Forte" },
+  { value: "light-weak", label: "Claro Fraco" },
+  { value: "dark", label: "Escuro Forte" },
+  { value: "dark-weak", label: "Escuro Fraco" },
 ];
 
 export const MOCK_DATA_INITIAL = {

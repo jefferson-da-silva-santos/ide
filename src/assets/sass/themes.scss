@@ -32,6 +32,40 @@
     color: #000000;
   }
 }
+/*===============(DARK THEME)===============*/
+
+.weak-dark-ide-overlay-father {
+  background-color: rgba(0, 0, 0, 0.445);
+}
+
+.weak-dark-ide-title {
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.weak-dark-ide-title .typed-cursor {
+  color: #ffd700;
+}
+
+.weak-dark-ide-verse {
+   color: #e0e0e0;
+}
+
+.weak-dark-ide-reference {
+  color: #e0e0e0;
+}
+
+.weak-dark-ide-louvor {
+  color: #e0e0e0;
+}
+
+.weak-dark-ide-link {
+   background-color: #ffd700;
+
+  i {
+    color: #000000;
+  }
+}
 
 /*===============(LIGHT THEME)===============*/
 
@@ -61,6 +95,42 @@
 }
 
 .light-ide-link {
+   background-color: #003e5f;
+
+  i {
+    color: #ffffff;
+  }
+}
+
+
+/*===============(WEAK LIGHT THEME)===============*/
+
+.weak-light-ide-overlay-father {
+  background-color: rgba(255, 255, 255, 0.293);
+}
+
+.weak-light-ide-title {
+  color: #006196;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 0.403);
+}
+
+.weak-light-ide-title .typed-cursor {
+  color: #006196;
+}
+
+.weak-light-ide-verse {
+  color: #000000;
+}
+
+.weak-light-ide-reference {
+  color: #000000;
+}
+
+.weak-light-ide-louvor {
+  color: #000000;
+}
+
+.weak-light-ide-link {
    background-color: #003e5f;
 
   i {
