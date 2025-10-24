@@ -37,8 +37,7 @@ const Invitation = () => {
       <div className="texts">
         <h1 className="invitation__title">Gerar link de convite</h1>
         <p className="invitation__description">
-          Aqui você pode gerar um link de convite para que seus amigos se
-          cadastrem
+          Permita que mais pessoas cooperem com essa obra preciosa. Envie um link de convite #SejaUmGanhadorDeAlmas
         </p>
       </div>
 
