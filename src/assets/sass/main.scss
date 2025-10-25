@@ -332,23 +332,25 @@
 }
 
 .content__form {
-  padding: 1rem;
-  @include flex(column, center, baseline, .2rem);
+  padding: 1rem 2rem 2rem 2rem;
+  @include flex(column, center, baseline, .5rem);
   width: 100%;
 
   label {
     margin-top: .5rem;
-    color: #004c76;
-    font-weight: 500;
+    font-size: .9rem;
+    color: #000000;
+    font-weight: 600;
   }
 
   .p-dropdown {
-    padding: 1rem !important;
+    padding: .5rem 1rem !important;
     width: 100% !important;
+    max-width: 20rem;
   }
 
   .p-dropdown-item {
-    padding: 1rem !important;
+    padding: .5rem 1rem !important;
   }
 
 
@@ -548,16 +550,36 @@
     @include flex(column, center, baseline, 1.5rem);
     width: 100%;
     max-width: 70rem;
-    padding: 1rem 2rem 2rem 2rem;
+    overflow: hidden;
     background: #ffffff; /* leve fundo azulado */
     border-radius: 7px;
     box-shadow: 0 0 10px rgba(101, 101, 101, 0.2);
     font-family: "Poppins", sans-serif;
 
+    .form-content {
+      width: 100%;
+      padding: 0 2rem 2rem 2rem;
+      
+    }
+
+    .header-form {
+      @include flex(column, center, baseline, 0.5rem);
+      width: 100%;
+      padding: 2rem;
+     background-image: linear-gradient(to bottom, #065a90, #004173);
+
+     h2 {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 600;
+     }
+    }
+
     .form-group {
       position: relative;
       @include flex(column, center, baseline, 0rem);
       width: 100%;
+      
 
       .error {
         position: absolute;
@@ -567,13 +589,6 @@
         bottom: -16px;
       }
     }
-  }
-
-  h2 {
-    text-align: center;
-    color: #0077b6; /* azul profundo pra contraste */
-    margin-bottom: 2rem;
-    font-weight: 700;
   }
 
   .label-ide {
@@ -621,6 +636,7 @@
     font-weight: bold;
     cursor: pointer;
     font-size: 1rem;
+    margin-top: 1.5rem;
     transition: 0.3s ease;
   }
 

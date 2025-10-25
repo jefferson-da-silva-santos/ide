@@ -116,6 +116,12 @@
   .container-home form .form-group .error {
     font-size: 0.7rem;
   }
+  .container-home .form-ide .form-content {
+    padding: 0 1rem 1rem 1rem;
+  }
+  .content__form {
+    padding: 1rem 1rem 1rem 1rem;
+  }
   .container-home label {
     margin-bottom: 4px;
   }
@@ -125,10 +131,6 @@
   }
   .container-home .header-home .menu {
     margin-left: 1rem;
-  }
-
-  .container-home form {
-    padding: 1rem;
   }
 
   .container-login .wrapper {

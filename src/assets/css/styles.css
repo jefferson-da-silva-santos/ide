@@ -338,25 +338,27 @@
 }
 
 .content__form {
-  padding: 1rem;
+  padding: 1rem 2rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: baseline;
-  gap: 0.2rem;
+  gap: 0.5rem;
   width: 100%;
 }
 .content__form label {
   margin-top: 0.5rem;
-  color: #004c76;
-  font-weight: 500;
+  font-size: 0.9rem;
+  color: #000000;
+  font-weight: 600;
 }
 .content__form .p-dropdown {
-  padding: 1rem !important;
+  padding: 0.5rem 1rem !important;
   width: 100% !important;
+  max-width: 20rem;
 }
 .content__form .p-dropdown-item {
-  padding: 1rem !important;
+  padding: 0.5rem 1rem !important;
 }
 .content__form textarea {
   height: 10rem !important;
@@ -581,11 +583,30 @@
   gap: 1.5rem;
   width: 100%;
   max-width: 70rem;
-  padding: 1rem 2rem 2rem 2rem;
+  overflow: hidden;
   background: #ffffff; /* leve fundo azulado */
   border-radius: 7px;
   box-shadow: 0 0 10px rgba(101, 101, 101, 0.2);
   font-family: "Poppins", sans-serif;
+}
+.container-home .form-ide .form-content {
+  width: 100%;
+  padding: 0 2rem 2rem 2rem;
+}
+.container-home .form-ide .header-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 2rem;
+  background-image: linear-gradient(to bottom, #065a90, #004173);
+}
+.container-home .form-ide .header-form h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 .container-home .form-ide .form-group {
   position: relative;
@@ -602,12 +623,6 @@
   font-size: 0.8rem;
   position: absolute;
   bottom: -16px;
-}
-.container-home h2 {
-  text-align: center;
-  color: #0077b6; /* azul profundo pra contraste */
-  margin-bottom: 2rem;
-  font-weight: 700;
 }
 .container-home .label-ide {
   display: block;
@@ -649,6 +664,7 @@
   font-weight: bold;
   cursor: pointer;
   font-size: 1rem;
+  margin-top: 1.5rem;
   transition: 0.3s ease;
 }
 .container-home button[type=submit]:hover {
@@ -1056,6 +1072,12 @@
   .container-home form .form-group .error {
     font-size: 0.7rem;
   }
+  .container-home .form-ide .form-content {
+    padding: 0 1rem 1rem 1rem;
+  }
+  .content__form {
+    padding: 1rem 1rem 1rem 1rem;
+  }
   .container-home label {
     margin-bottom: 4px;
   }
@@ -1065,9 +1087,6 @@
   }
   .container-home .header-home .menu {
     margin-left: 1rem;
-  }
-  .container-home form {
-    padding: 1rem;
   }
   .container-login .wrapper {
     display: grid;
