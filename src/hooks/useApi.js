@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../api/api";
+import useAuth from "./useAuth";
 
 const useApi = ({
   endpoint = "",
@@ -11,9 +12,10 @@ const useApi = ({
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { logout } = useAuth();
 
   async function fetchData(
-    end = endpoint ,
+    end = endpoint,
     met = method,
     bod = body,
     head = headers,
@@ -42,6 +44,9 @@ const useApi = ({
 
       return response;
     } catch (err) {
+      if (err.response.status === 401 || err.response.status === 403) {
+        logout();
+      }
       console.error("Erro na requisição:", err);
 
       // Evita quebra caso algum campo esteja ausente
