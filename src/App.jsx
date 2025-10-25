@@ -28,7 +28,7 @@ function App() {
               path="/invitation"
               element={
                 <PrivateRouter>
-                  <Home childr  en={
+                  <Home children={
                     <AdminOnly sendHome>
                       <Invitation />
                     </AdminOnly>
