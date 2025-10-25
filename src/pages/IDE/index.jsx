@@ -39,7 +39,6 @@ export const IDE = () => {
         to={"https://www.instagram.com/ieadpecedro"}
         target="_blank"
       >
-        <i className="bx bxl-instagram"></i>
       </Link>
 
       <div className={`ide-overlay-father ${tema}-ide-overlay-father`}>

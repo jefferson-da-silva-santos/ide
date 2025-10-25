@@ -285,7 +285,10 @@
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  padding: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  background-image: url("../image/insta.png");
+  background-size: cover;
   border-radius: 50%;
   cursor: pointer;
   animation: animationButton 2s infinite;
