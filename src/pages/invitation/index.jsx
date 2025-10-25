@@ -41,7 +41,7 @@ const Invitation = () => {
   const rolesDisponiveis = [
     { label: "Administrador", value: "admin" },
     { label: "Editor", value: "editor" },
-    { label: "Visualizador", value: "viewer" },
+    { label: "Visualizador", value: "visitante" },
   ];
 
   return (
