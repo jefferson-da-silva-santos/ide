@@ -1,7 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState } from "react";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import { InputSwitch } from "primereact/inputswitch";
 import useApi from "../../hooks/useApi";
 import CurrentDataPreview from "./CurrentDataPreview";
@@ -69,13 +68,13 @@ export const FormContent = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit}  className="form-ide">
       <div className="header-form">
         <h2>Formulário Evangelístico ✝️</h2>
       </div>
 
       <div>
-        <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <label className="label-ide" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <InputSwitch
             checked={showCurrentData}
             onChange={toggleShowCurrentData}
@@ -103,7 +102,7 @@ export const FormContent = () => {
       )}
 
       <div className="form-group">
-        <label htmlFor="palavraEsperanca">Palavra de Esperança *</label>
+        <label className="label-ide" htmlFor="palavraEsperanca">Palavra de Esperança *</label>
 
         <input
           id="palavraEsperanca"
@@ -127,7 +126,7 @@ export const FormContent = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="textoBiblico">Texto Bíblico *</label>
+        <label className="label-ide" htmlFor="textoBiblico">Texto Bíblico *</label>
 
         <textarea
           id="textoBiblico"
@@ -152,7 +151,7 @@ export const FormContent = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="referencia">Referência Bíblica *</label>
+        <label className="label-ide" htmlFor="referencia">Referência Bíblica *</label>
 
         <input
           id="referencia"
@@ -175,7 +174,7 @@ export const FormContent = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="background">Imagem de Fundo *</label>
+        <label className="label-ide" htmlFor="background">Imagem de Fundo *</label>
 
         <select
           id="background"
@@ -211,7 +210,7 @@ export const FormContent = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="louvor">Link do Louvor *</label>
+        <label className="label-ide" htmlFor="louvor">Link do Louvor *</label>
 
         <input
           type="text"
@@ -238,7 +237,7 @@ export const FormContent = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="tema">Tema de Cores *</label>
+        <label className="label-ide" htmlFor="tema">Tema de Cores *</label>
 
         <select
           id="tema"

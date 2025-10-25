@@ -3,6 +3,7 @@ import banner from "../../assets/image/banner.png";
 import useMenu from "../../hooks/useMenu";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import AdminOnly from "../AdminOnly";
 
 const NavBar = () => {
   const { isMenuOpen, toggleMenu } = useMenu();
@@ -37,12 +38,14 @@ const NavBar = () => {
             Home
           </Link>
         </li>
-        <li className="navbar-item" onClick={toggleMenu}>
-          <i className="bx bx-user"></i>
-          <Link className="navbar-link" to="/invitation">
-            Convidar
-          </Link>
-        </li>
+        <AdminOnly>
+          <li className="navbar-item" onClick={toggleMenu}>
+            <i className="bx bx-user"></i>
+            <Link className="navbar-link" to="/invitation">
+              Convidar
+            </Link>
+          </li>
+        </AdminOnly>
         <li className="navbar-item" onClick={toggleMenu}>
           <i className="bx bx-log-out"></i>
           <Link className="navbar-link" to="/login" onClick={logout}>

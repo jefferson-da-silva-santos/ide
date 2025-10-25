@@ -14,6 +14,12 @@
   font-family: "Quicksand", sans-serif;
 }
 
+.label-preview {
+  color: #000;
+  font-weight: 600;
+  margin-bottom: .3rem
+}
+
 .preloader {
   @include flex(column, center, center, 0);
   position: fixed;
@@ -30,15 +36,15 @@
   @keyframes preloaderAnmed {
     0% {
       transform: scale(100%);
-       filter: drop-shadow(0 0 10px #b9bc00);
+      filter: drop-shadow(0 0 10px #b9bc00);
     }
     50% {
       transform: scale(115%);
-       filter: drop-shadow(0 0 15px #fcff42);
+      filter: drop-shadow(0 0 15px #fcff42);
     }
     100% {
       transform: scale(100%);
-       filter: drop-shadow(0 0 10px #b9bc00);
+      filter: drop-shadow(0 0 10px #b9bc00);
     }
   }
 
@@ -46,7 +52,6 @@
     max-width: 4rem;
     animation: preloaderAnmed 1s ease-in-out infinite;
   }
-
 }
 
 .container-login {
@@ -74,7 +79,6 @@
         background-position: center;
         background-repeat: no-repeat;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.323);
-        
       }
 
       &:nth-child(2) {
@@ -305,25 +309,53 @@
 .ide-title {
   font-family: "Oswald", sans-serif;
   font-size: 3.5em;
-  margin-bottom: 1rem;
   line-height: 1.2;
+  max-width: 45rem;
+  margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
 .ide-verse {
-  font-family: "Open Sans", sans-serif; 
+  font-family: "Open Sans", sans-serif;
   font-size: 1.5em;
-  margin-bottom: 1rem;
   line-height: 1.5;
   font-style: italic;
+  max-width: 50rem;
+  margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
 .ide-reference {
   font-weight: bold;
   display: block;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
+.content__form {
+  padding: 1rem;
+  @include flex(column, center, baseline, .2rem);
+  width: 100%;
 
+  label {
+    margin-top: .5rem;
+    color: #004c76;
+    font-weight: 500;
+  }
+
+  .p-dropdown {
+    padding: 1rem !important;
+    width: 100% !important;
+  }
+
+  .p-dropdown-item {
+    padding: 1rem !important;
+  }
+
+
+  textarea {
+    height: 10rem !important;
+  }
+}
 
 .typed-cursor {
   animation: blink 1s infinite;
@@ -369,7 +401,6 @@
       }
     }
 
-
     .menu {
       @include flex(row, center, center, 0.5rem);
       display: none;
@@ -390,7 +421,7 @@
 
     .ide-link-ide {
       @include flex(row, center, center, 0.5rem);
-      padding: .5rem 1rem;
+      padding: 0.5rem 1rem;
       background-color: #fff;
       color: #003049;
       text-decoration: none;
@@ -513,7 +544,7 @@
     }
   }
 
-  form {
+  .form-ide {
     @include flex(column, center, baseline, 1.5rem);
     width: 100%;
     max-width: 70rem;
@@ -545,7 +576,7 @@
     font-weight: 700;
   }
 
-  label {
+  .label-ide {
     display: block;
     font-weight: 600;
     color: #000000;
@@ -567,7 +598,6 @@
 
   option {
     padding: 0.5rem;
-    
   }
 
   input:focus,
@@ -607,15 +637,15 @@
 }
 
 .invitation {
-   width: 100%;
-    position: relative;
-    max-width: 70rem;
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
-  
+  width: 100%;
+  position: relative;
+  max-width: 70rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+
   .texts {
-     @include flex(column, center, baseline, .5rem);
+    @include flex(column, center, baseline, 0.5rem);
     padding: 1rem 2rem;
     background-image: linear-gradient(to bottom, #065a90, #004173);
     color: #fff;
@@ -631,13 +661,12 @@
   }
 
   &__description {
-   color: #d0d0d0;
-   font-size: .9em;
+    color: #d0d0d0;
+    font-size: 0.9em;
   }
 
   .content {
     @include flex(column, center, baseline, 1rem);
-    padding: 1rem 2rem;
     background-color: #fff;
     color: #fff;
     width: 100%;
@@ -654,6 +683,7 @@
       border: none;
       cursor: pointer;
       font-size: 1rem;
+      margin-top: 1rem;
     }
 
     &__button:hover {
@@ -678,6 +708,18 @@
       font-size: 1rem;
     }
 
+    &__textarea {
+      padding: 1rem;
+      background-color: white;
+      color: #000000;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
     &__button-copy {
       padding: 1rem;
       background-image: linear-gradient(to bottom, #065a90, #004173);
@@ -687,7 +729,6 @@
       cursor: pointer;
       font-size: 1rem;
     }
-    
   }
 }
 
@@ -718,30 +759,32 @@
 }
 /* Seu arquivo .css */
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
+ .p-dropdown-item {
+    padding: 1rem !important;
+  }
 
 
 .current-data-preview {
   width: 100%;
-    /* Estilos para o bloco de preview */
-    margin-top: 5px;
-    padding: 5px 0;
-    border-top: 1px dashed #ddd; /* Linha de separação */
-    font-size: 0.9em;
-    color: #555;
+  /* Estilos para o bloco de preview */
+  margin-top: 5px;
+  padding: 5px 0;
+  border-top: 1px dashed #ddd; /* Linha de separação */
+  font-size: 0.9em;
+  color: #555;
 }
 
 .current-data-preview .preview-input {
   width: 100%;
-    /* Estilos para o input desabilitado */
-        background-color: #d1f9ff;
-    border: 1px solid #8de4ff;
-    color: #333;
-    cursor: default; /* Mostra que não é clicável */
+  /* Estilos para o input desabilitado */
+  background-color: #d1f9ff;
+  border: 1px solid #8de4ff;
+  color: #333;
+  cursor: default; /* Mostra que não é clicável */
 }
-
 
 @import "themes.scss";
 @import "media.scss";

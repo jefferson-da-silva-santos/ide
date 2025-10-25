@@ -1,6 +1,6 @@
 const CurrentDataPreview = ({ label, value, isTextArea = false, loadingContent, showCurrentData }) => (
     <div className={`current-data-preview ${showCurrentData ? "" : "hidden"}`}>
-      <label style={{ fontSize: "0.85em" }}>
+      <label className="label-preview" style={{ fontSize: "0.85em" }}>
         {loadingContent ? "Carregando Dados..." : label || "Dados Atuais:"}
       </label>
       {loadingContent ? (

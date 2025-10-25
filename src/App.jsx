@@ -7,6 +7,7 @@ import AuthProvider from "./providers/AuthProvider";
 import PrivateRouter from "./router/PrivateRouter";
 import { FormContent } from "./components/FormContent";
 import Invitation from "./pages/invitation";
+import AdminOnly from "./components/AdminOnly";
 
 function App() {
   return (
@@ -27,7 +28,11 @@ function App() {
               path="/invitation"
               element={
                 <PrivateRouter>
-                  <Home children={<Invitation />} />
+                  <Home childr  en={
+                    <AdminOnly sendHome>
+                      <Invitation />
+                    </AdminOnly>
+                  } />
                 </PrivateRouter>
               }
             />

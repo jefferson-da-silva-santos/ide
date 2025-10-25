@@ -13,7 +13,7 @@ const useApi = ({
   const [error, setError] = useState(null);
 
   async function fetchData(
-    end = endpoint,
+    end = endpoint ,
     met = method,
     bod = body,
     head = headers,

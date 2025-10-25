@@ -19,7 +19,7 @@ export const Home = ({ children}) => {
         <div className="group-buttons">
           <Link to="/" className="ide-link-ide">
             Página IDE
-            <i class='bx bxs-flame bx-tada' ></i>
+            <i className='bx bxs-flame bx-tada' ></i>
           </Link>
           <div className="header-user">
             <i className="bx bx-user"></i>
