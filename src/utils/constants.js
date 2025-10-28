@@ -22,6 +22,10 @@ export const backgroundOptions = [
     value:
       "https://raw.githubusercontent.com/jefferson-da-silva-santos/imagens-projetos/refs/heads/main/IDE-PROJECT/cruz.jfif",
     label: "Cruz",
+  },
+  {
+    value: "https://i.imgur.com/YIYqBV7.jpeg",
+    label: "Jesus o Bom Pastor",
   }
 ];
 
