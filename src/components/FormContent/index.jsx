@@ -7,28 +7,34 @@ import CurrentDataPreview from "./CurrentDataPreview";
 import { handleGetContents } from "../../api/requests";
 import { showNotification } from "../../utils/showNotyf";
 import { converterLinkYoutube } from "../../utils/format";
-import { backgroundOptions, initialValuesFromApi, MOCK_DATA_INITIAL, temaOptions } from "../../utils/constants";
+import {
+  backgroundOptions,
+  initialValuesFromApi,
+  MOCK_DATA_INITIAL,
+  temaOptions,
+} from "../../utils/constants";
 import validationSchemaIDE from "../../utils/validations";
 
-export const FormContent = () => {
+export const FormContent = ({ quantityPagesIde }) => {
   const [showCurrentData, setShowCurrentData] = useState(false);
   const [apiData, setApiData] = useState(MOCK_DATA_INITIAL);
+  const [id, setId] = useState(quantityPagesIde[0]);
 
   const toggleShowCurrentData = () => {
     setShowCurrentData(!showCurrentData);
   };
 
-  const {
-    loading: loadingContent,
-    fetchData: fetchContent,
-  } = useApi({ endpoint: "/conteudos/1", method: "GET" });
+  const { loading: loadingContent, fetchData: fetchContent } = useApi({
+    endpoint: `/conteudos/${id}`,
+    method: "GET",
+  });
 
   const { loading: loadingUpdateContent, fetchData: fetchUpdateContent } =
     useApi({ endpoint: "", method: "" });
 
   useEffect(() => {
     handleGetContents(fetchContent, setApiData);
-  }, []); 
+  }, [id]);
 
   const formik = useFormik({
     initialValues: initialValuesFromApi(apiData),
@@ -68,14 +74,24 @@ export const FormContent = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}  className="form-ide">
+    <form onSubmit={formik.handleSubmit} className="form-ide">
       <div className="header-form">
-        <h2>Proclame a mensagem aqui! ✝️</h2>
+        <select name="pagina" id="" onChange={(e) => setId(e.target.value)}>
+          {quantityPagesIde.map((id) => (
+            <option key={id} value={id}>
+              Página {id}
+            </option>
+          ))}
+        </select>
+        <h2>(Página {id}) Proclame a mensagem aqui! ✝️</h2>
       </div>
 
       <div className="form-content">
         <div className="form-group">
-          <label className="label-ide" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <label
+            className="label-ide"
+            style={{ display: "flex", alignItems: "center", gap: "8px" }}
+          >
             <InputSwitch
               checked={showCurrentData}
               onChange={toggleShowCurrentData}
@@ -96,12 +112,14 @@ export const FormContent = () => {
               borderRadius: "4px",
             }}
           >
-            Dados Atuais (Preview): Abaixo de cada campo você vê
-            o dado que está atualmente ativo.
+            Dados Atuais (Preview): Abaixo de cada campo você vê o dado que está
+            atualmente ativo.
           </p>
         )}
         <div className="form-group">
-          <label className="label-ide" htmlFor="palavraEsperanca">Palavra de Esperança *</label>
+          <label className="label-ide" htmlFor="palavraEsperanca">
+            Palavra de Esperança *
+          </label>
           <input
             id="palavraEsperanca"
             name="palavraEsperanca"
@@ -111,9 +129,10 @@ export const FormContent = () => {
             onBlur={formik.handleBlur}
             value={formik.values.palavraEsperanca}
           />
-          {formik.touched.palavraEsperanca && formik.errors.palavraEsperanca && (
-            <span className="error">{formik.errors.palavraEsperanca}</span>
-          )}
+          {formik.touched.palavraEsperanca &&
+            formik.errors.palavraEsperanca && (
+              <span className="error">{formik.errors.palavraEsperanca}</span>
+            )}
           <CurrentDataPreview
             label={"mensagem atual:"}
             value={apiData?.valor?.mensagem || ""}
@@ -122,7 +141,9 @@ export const FormContent = () => {
           />
         </div>
         <div className="form-group">
-          <label className="label-ide" htmlFor="textoBiblico">Texto Bíblico *</label>
+          <label className="label-ide" htmlFor="textoBiblico">
+            Texto Bíblico *
+          </label>
           <textarea
             id="textoBiblico"
             name="textoBiblico"
@@ -144,7 +165,9 @@ export const FormContent = () => {
           />
         </div>
         <div className="form-group">
-          <label className="label-ide" htmlFor="referencia">Referência Bíblica *</label>
+          <label className="label-ide" htmlFor="referencia">
+            Referência Bíblica *
+          </label>
           <input
             id="referencia"
             name="referencia"
@@ -165,7 +188,9 @@ export const FormContent = () => {
           />
         </div>
         <div className="form-group">
-          <label className="label-ide" htmlFor="background">Imagem de Fundo *</label>
+          <label className="label-ide" htmlFor="background">
+            Imagem de Fundo *
+          </label>
           <select
             id="background"
             name="background"
@@ -198,7 +223,9 @@ export const FormContent = () => {
           />
         </div>
         <div className="form-group">
-          <label className="label-ide" htmlFor="louvor">Link do Louvor *</label>
+          <label className="label-ide" htmlFor="louvor">
+            Link do Louvor *
+          </label>
           <input
             type="text"
             placeholder="Link do louvor (do youtube) aqui"
@@ -222,7 +249,9 @@ export const FormContent = () => {
           />
         </div>
         <div className="form-group">
-          <label className="label-ide" htmlFor="tema">Tema de Cores *</label>
+          <label className="label-ide" htmlFor="tema">
+            Tema de Cores *
+          </label>
           <select
             id="tema"
             name="tema"

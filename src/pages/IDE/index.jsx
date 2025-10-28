@@ -5,13 +5,13 @@ import useApi from "../../hooks/useApi";
 import Preloader from "../../components/Preloader";
 import { handleGetContents } from "../../api/requests";
 
-export const IDE = () => {
+export const IDE = ({ id }) => {
   const [content, setContent] = useState(null); 
   
   const {
     loading: loadingContent,
     fetchData: fetchContent
-  } = useApi({ endpoint: "/conteudos/1", method: "GET" });
+  } = useApi({ endpoint: `/conteudos/${id}`, method: "GET" });
 
   useEffect(() => {
     handleGetContents(fetchContent, setContent, true);

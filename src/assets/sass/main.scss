@@ -448,12 +448,14 @@
     }
   }
 
+
   .main-home {
     @include flex(column, flex-start, center, 0);
     grid-row: 2 / -1;
     grid-column: 2 / -1;
     width: 100%;
     padding: 2em;
+    
   }
 
   .navbar {

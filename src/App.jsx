@@ -9,18 +9,25 @@ import { FormContent } from "./components/FormContent";
 import Invitation from "./pages/invitation";
 import AdminOnly from "./components/AdminOnly";
 
+const ramdomNumber = Math.floor(Math.random() * 5) + 1
+const quantityPagesIde = [
+  1, 2, 3, 4, 5
+]
+
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <MenuProvider>
           <Routes>
-            <Route path="/" element={<IDE />} />
+            {quantityPagesIde.map((page) => (
+              <Route path={`/${page}`} element={<IDE id={page} />} />
+            ))}
             <Route
               path="/home"
               element={
                 <PrivateRouter>
-                  <Home children={<FormContent />} />
+                  <Home children={<FormContent quantityPagesIde={quantityPagesIde}/>} />
                 </PrivateRouter>
               }
             />
@@ -37,7 +44,7 @@ function App() {
               }
             />
             <Route path="/login" element={<Login />} />
-            <Route path="*" element={<IDE />} />
+            <Route path="*" element={<IDE id={ramdomNumber} />} />
           </Routes>
         </MenuProvider>
       </AuthProvider>
