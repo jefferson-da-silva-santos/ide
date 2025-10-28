@@ -26,6 +26,10 @@ export const backgroundOptions = [
   {
     value: "https://i.imgur.com/YIYqBV7.jpeg",
     label: "Jesus o Bom Pastor",
+  },
+  {
+    value: "https://i.imgur.com/EVI0PBA.jpeg",
+    label: "A volta de Jesus"
   }
 ];
 
