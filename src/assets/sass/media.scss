@@ -160,6 +160,30 @@
   }
 }
 
+@include media(590px) {
+  .container-home .form-ide .header-form {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: start;
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  .container-home input,
+  .container-home textarea,
+  .container-home select {
+    padding: 5px;
+    font-size: 0.8rem;
+  }
+
+  .container-home .form-ide .header-form select {
+    max-width: 9rem;
+  }
+}
+
 @include media(420px) {
   .ide-player iframe {
     height: 190px;

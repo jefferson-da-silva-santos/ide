@@ -598,13 +598,17 @@
 }
 .container-home .form-ide .header-form {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: baseline;
-  gap: 0.5rem;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   width: 100%;
   padding: 2rem;
   background-image: linear-gradient(to bottom, #065a90, #004173);
+}
+.container-home .form-ide .header-form select {
+  width: 100%;
+  max-width: 12rem;
 }
 .container-home .form-ide .header-form h2 {
   color: #fff;
@@ -1117,6 +1121,26 @@
     padding: 2rem 2rem;
     justify-content: flex-start;
     gap: 1rem;
+  }
+}
+@media screen and (max-width: 590px) {
+  .container-home .form-ide .header-form {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: start;
+    padding: 1rem;
+  }
+  .container-home .form-ide .header-form h2 {
+    font-size: 1.2rem;
+  }
+  .container-home input,
+  .container-home textarea,
+  .container-home select {
+    padding: 5px;
+    font-size: 0.8rem;
+  }
+  .container-home .form-ide .header-form select {
+    max-width: 9rem;
   }
 }
 @media screen and (max-width: 420px) {

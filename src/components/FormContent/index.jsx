@@ -15,10 +15,14 @@ import {
 } from "../../utils/constants";
 import validationSchemaIDE from "../../utils/validations";
 
-export const FormContent = ({ quantityPagesIde }) => {
+export const FormContent = ({ setDestinationPage, quantityPagesIde }) => {
+  const [id, setId] = useState(() => {
+    const savedId = localStorage.getItem("paginaSelecionada");
+    return savedId ? Number(savedId) : quantityPagesIde[0];
+  });
+
   const [showCurrentData, setShowCurrentData] = useState(false);
   const [apiData, setApiData] = useState(MOCK_DATA_INITIAL);
-  const [id, setId] = useState(quantityPagesIde[0]);
 
   const toggleShowCurrentData = () => {
     setShowCurrentData(!showCurrentData);
@@ -34,6 +38,11 @@ export const FormContent = ({ quantityPagesIde }) => {
 
   useEffect(() => {
     handleGetContents(fetchContent, setApiData);
+  }, [id]);
+
+  // Salva no localStorage sempre que o id mudar
+  useEffect(() => {
+    localStorage.setItem("paginaSelecionada", id);
   }, [id]);
 
   const formik = useFormik({
@@ -75,16 +84,24 @@ export const FormContent = ({ quantityPagesIde }) => {
 
   return (
     <form onSubmit={formik.handleSubmit} className="form-ide">
-      <div className="header-form">
-        <select name="pagina" id="" onChange={(e) => setId(e.target.value)}>
+      <header className="header-form">
+        <select
+          name="pagina"
+          id=""
+          onChange={(e) => {
+            setDestinationPage(e.target.value)
+            setId(Number(e.target.value))
+          }}
+          value={id}
+        >
           {quantityPagesIde.map((id) => (
             <option key={id} value={id}>
-              Página {id}
+              Proclamação {id} 🔥
             </option>
           ))}
         </select>
         <h2>(Página {id}) Proclame a mensagem aqui! ✝️</h2>
-      </div>
+      </header>
 
       <div className="form-content">
         <div className="form-group">
@@ -127,7 +144,9 @@ export const FormContent = ({ quantityPagesIde }) => {
             placeholder='Ex: "Jesus te ama!"'
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.palavraEsperanca}
+            value={
+              loadingContent ? "Carregando..." : formik.values.palavraEsperanca
+            }
           />
           {formik.touched.palavraEsperanca &&
             formik.errors.palavraEsperanca && (
@@ -151,7 +170,9 @@ export const FormContent = ({ quantityPagesIde }) => {
             placeholder="Digite aqui o versículo ou texto bíblico"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.textoBiblico}
+            value={
+              loadingContent ? "Carregando..." : formik.values.textoBiblico
+            }
           ></textarea>
           {formik.touched.textoBiblico && formik.errors.textoBiblico && (
             <span className="error">{formik.errors.textoBiblico}</span>
@@ -175,7 +196,7 @@ export const FormContent = ({ quantityPagesIde }) => {
             placeholder='Ex: "João 3:16"'
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.referencia}
+            value={loadingContent ? "Carregando..." : formik.values.referencia}
           />
           {formik.touched.referencia && formik.errors.referencia && (
             <span className="error">{formik.errors.referencia}</span>
@@ -196,7 +217,7 @@ export const FormContent = ({ quantityPagesIde }) => {
             name="background"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.background}
+            value={loadingContent ? "Carregando..." : formik.values.background}
             className={
               formik.touched.background && formik.errors.background
                 ? "input-error"
@@ -233,7 +254,7 @@ export const FormContent = ({ quantityPagesIde }) => {
             name="louvor"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.louvor}
+            value={loadingContent ? "Carregando..." : formik.values.louvor}
             className={
               formik.touched.louvor && formik.errors.louvor ? "input-error" : ""
             }
@@ -257,7 +278,7 @@ export const FormContent = ({ quantityPagesIde }) => {
             name="tema"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.tema}
+            value={loadingContent ? "Carregando..." : formik.values.tema}
             className={
               formik.touched.tema && formik.errors.tema ? "input-error" : ""
             }

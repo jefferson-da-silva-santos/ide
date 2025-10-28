@@ -4,7 +4,7 @@ import useMenu from "../../hooks/useMenu";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
-export const Home = ({ children}) => {
+export const Home = ({ children, destinationPage }) => {
   const { toggleMenu } = useMenu();
   const { user } = useAuth()
 
@@ -16,8 +16,8 @@ export const Home = ({ children}) => {
           <i className="bx bx-menu"></i>
         </button>
         <div className="group-buttons">
-          <Link to="/" className="ide-link-ide">
-            Página IDE
+          <Link to={`/${destinationPage}`} className="ide-link-ide">
+            Página IDE {destinationPage}
             <i className='bx bxs-flame bx-tada' ></i>
           </Link>
           <div className="header-user">

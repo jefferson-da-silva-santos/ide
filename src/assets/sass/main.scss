@@ -568,10 +568,15 @@
     }
 
     .header-form {
-      @include flex(column, center, baseline, 0.5rem);
+      @include flex(row-reverse, space-between, center, 1rem);
       width: 100%;
       padding: 2rem;
      background-image: linear-gradient(to bottom, #065a90, #004173);
+
+     select {
+      width: 100%;
+      max-width: 12rem;
+     }
 
      h2 {
       color: #fff;

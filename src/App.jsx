@@ -8,13 +8,16 @@ import PrivateRouter from "./router/PrivateRouter";
 import { FormContent } from "./components/FormContent";
 import Invitation from "./pages/invitation";
 import AdminOnly from "./components/AdminOnly";
+import { useState } from "react";
 
-const ramdomNumber = Math.floor(Math.random() * 5) + 1
-const quantityPagesIde = [
-  1, 2, 3, 4, 5
-]
+const ramdomNumber = Math.floor(Math.random() * 5) + 1;
+const quantityPagesIde = [1, 2, 3, 4, 5];
 
 function App() {
+  const [destinationPage, setDestinationPage] = useState(() => {
+    const savedId = localStorage.getItem("paginaSelecionada");
+    return savedId ? Number(savedId) : quantityPagesIde[0];
+  });
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -27,7 +30,15 @@ function App() {
               path="/home"
               element={
                 <PrivateRouter>
-                  <Home children={<FormContent quantityPagesIde={quantityPagesIde}/>} />
+                  <Home
+                    destinationPage={destinationPage}
+                    children={
+                      <FormContent
+                        setDestinationPage={setDestinationPage}
+                        quantityPagesIde={quantityPagesIde}
+                      />
+                    }
+                  />
                 </PrivateRouter>
               }
             />
@@ -35,11 +46,13 @@ function App() {
               path="/invitation"
               element={
                 <PrivateRouter>
-                  <Home children={
-                    <AdminOnly sendHome>
-                      <Invitation />
-                    </AdminOnly>
-                  } />
+                  <Home
+                    children={
+                      <AdminOnly sendHome>
+                        <Invitation />
+                      </AdminOnly>
+                    }
+                  />
                 </PrivateRouter>
               }
             />
