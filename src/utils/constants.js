@@ -1,7 +1,6 @@
 export const backgroundOptions = [
   {
-    value:
-      "https://i.imgur.com/K4Rq0pt.jpeg",
+    value: "https://i.imgur.com/K4Rq0pt.jpeg",
     label: "Cruzada na Praça",
   },
   {
@@ -38,9 +37,12 @@ export const backgroundOptions = [
   {
     value: 'https://i.imgur.com/zYpe1zI.jpeg',
     label: 'Mão levantada em adoração'
+  },
+  {
+    value: 'https://i.imgur.com/3HoQvZa.png',
+    label: 'Geraldão'
   }
 ];
-
 
 export const temaOptions = [
   { value: "light", label: "Claro Forte" },
@@ -48,7 +50,8 @@ export const temaOptions = [
   { value: "dark", label: "Escuro Forte" },
   { value: "dark-weak", label: "Escuro Fraco" },
   { value: "azul-ieadpe", label: "Azul IEADPE" },
-  { value: 'adoracao', label: 'Adoração' }
+  { value: 'adoracao', label: 'Adoração' },
+  { value: 'geraldao', label: 'Geraldão' }
 ];
 
 export const MOCK_DATA_INITIAL = {
