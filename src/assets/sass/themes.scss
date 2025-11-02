@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Euphoria+Script&display=swap');
 
 // =============================
 // VARIÁVEIS GERAIS
@@ -11,7 +11,7 @@ $font-barlow: 'Barlow Condensed', sans-serif;
 $font-montserrat: 'Montserrat', sans-serif;
 $font-quicksand: 'Quicksand', sans-serif;
 $font-open-sans: 'Open Sans', sans-serif;
-$font-tangerine: "Tangerine", cursive;
+$font-euphoria: 'Euphoria Script', cursive;
 
 
 // Cores principais
@@ -220,15 +220,15 @@ $sombra-clara: 2px 2px 4px rgba(64, 64, 64, 0.403);
 }
 
 .adoracao-ide-title {
-  font-family: $font-tangerine !important;
-  color: #ffb900;
+  font-family: $font-euphoria !important;
+  color: #ff7620;
   font-weight: 900;
   line-height: 1;
-  font-size: 4rem !important;
+  font-size: 3.2rem !important;
   text-shadow: $sombra-clara;
 
   .typed-cursor {
-    color: #ffb900;
+    color: #ff7620;
   }
 }
 
@@ -236,20 +236,21 @@ $sombra-clara: 2px 2px 4px rgba(64, 64, 64, 0.403);
   font-family: $font-montserrat;
   color: $cor-branco;
   font-style: normal;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-style: italic;
 }
 
 .adoracao-ide-reference {
   font-family: $font-montserrat;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-style: normal;
-  color: #ffffff; 
+  color: #ff7620; 
   text-transform: uppercase;
 }
 
 .adoracao-ide-louvor {
-  
+  font-size: .8rem;
   color: $cor-branco;
   font-weight: 500;
 }

@@ -6,24 +6,29 @@ import Preloader from "../../components/Preloader";
 import { handleGetContents } from "../../api/requests";
 
 export const IDE = ({ id }) => {
-  const [content, setContent] = useState(null); 
-  
-  const {
-    loading: loadingContent,
-    fetchData: fetchContent
-  } = useApi({ endpoint: `/conteudos/${id}`, method: "GET" });
+  const [content, setContent] = useState(null);
+
+  const { loading: loadingContent, fetchData: fetchContent } = useApi({
+    endpoint: `/conteudos/${id}`,
+    method: "GET",
+  });
+
+  useEffect(() => {
+    if (id) {
+      localStorage.setItem("paginaSelecionada", id);
+    }
+  }, [id]);
 
   useEffect(() => {
     handleGetContents(fetchContent, setContent, true);
   }, []);
-  
+
   if (loadingContent || content === null) {
-      return (
-          <Preloader />
-      );
+    return <Preloader />;
   }
 
-  const { mensagem, versiculo, referencia, link_louvor, background, tema } = content;
+  const { mensagem, versiculo, referencia, link_louvor, background, tema } =
+    content;
 
   return (
     <div
@@ -38,8 +43,7 @@ export const IDE = ({ id }) => {
         className={`ide-link ${tema}-ide-link`}
         to={"https://www.instagram.com/ieadpecedro"}
         target="_blank"
-      >
-      </Link>
+      ></Link>
 
       <div className={`ide-overlay-father ${tema}-ide-overlay-father`}>
         <div className="ide-overlay">

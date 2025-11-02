@@ -18,13 +18,17 @@ function App() {
     const savedId = localStorage.getItem("paginaSelecionada");
     return savedId ? Number(savedId) : quantityPagesIde[0];
   });
+
   return (
     <BrowserRouter>
       <AuthProvider>
         <MenuProvider>
           <Routes>
             {quantityPagesIde.map((page) => (
-              <Route path={`/${page}`} element={<IDE id={page} />} />
+              <Route path={`/${page}`} 
+              element={
+              <IDE id={page} />
+            } />
             ))}
             <Route
               path="/home"

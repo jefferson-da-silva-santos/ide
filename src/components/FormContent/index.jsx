@@ -40,7 +40,6 @@ export const FormContent = ({ setDestinationPage, quantityPagesIde }) => {
     handleGetContents(fetchContent, setApiData);
   }, [id]);
 
-  // Salva no localStorage sempre que o id mudar
   useEffect(() => {
     localStorage.setItem("paginaSelecionada", id);
   }, [id]);
