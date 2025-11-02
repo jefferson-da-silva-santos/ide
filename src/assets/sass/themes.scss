@@ -1,139 +1,263 @@
-/*===============(DARK THEME)===============*/
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+
+// =============================
+// VARIÁVEIS GERAIS
+// =============================
+
+// Fontes
+$font-barlow: 'Barlow Condensed', sans-serif;
+$font-montserrat: 'Montserrat', sans-serif;
+$font-quicksand: 'Quicksand', sans-serif;
+$font-open-sans: 'Open Sans', sans-serif;
+$font-tangerine: "Tangerine", cursive;
+
+
+// Cores principais
+$cor-dourado: #ffd700;
+$cor-branco: #ffffff;
+$cor-preto: #000000;
+$cor-cinza-claro: #e0e0e0;
+$cor-azul-ieadpe: #003e5f;
+$cor-azul-texto: #006196;
+$cor-azul-destaque: #9dd3ff;
+
+// Sombras
+$sombra-escura: 2px 2px 4px rgba(0, 0, 0, 0.7);
+$sombra-clara: 2px 2px 4px rgba(64, 64, 64, 0.403);
+
+// =============================
+// DARK THEME
+// =============================
 
 .dark-ide-overlay-father {
   background-color: rgba(0, 0, 0, 0.764);
 }
 
 .dark-ide-title {
-  color: #ffd700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-family: $font-quicksand;
+  color: $cor-dourado;
+  text-shadow: $sombra-escura;
+
+  .typed-cursor {
+    color: $cor-dourado;
+  }
 }
 
-.dark-ide-title .typed-cursor {
-  color: #ffd700;
-}
-
-.dark-ide-verse {
-   color: #e0e0e0;
-}
-
-.dark-ide-reference {
-  color: #e0e0e0;
-}
-
+.dark-ide-verse,
+.dark-ide-reference,
 .dark-ide-louvor {
-  color: #e0e0e0;
+  font-family: $font-open-sans;
+  color: $cor-cinza-claro;
 }
 
 .dark-ide-link {
-   background-color: #ffd700;
+  background-color: $cor-dourado;
 
   i {
-    color: #000000;
+    color: $cor-preto;
   }
 }
-/*===============(DARK THEME)===============*/
 
-.weak-dark-ide-overlay-father {
+// =============================
+// DARK WEAK THEME
+// =============================
+
+.dark-weak-ide-overlay-father {
   background-color: rgba(0, 0, 0, 0.445);
 }
 
-.weak-dark-ide-title {
-  color: #ffd700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
+.dark-weak-ide-title {
+  font-family: $font-quicksand;
+  color: $cor-dourado;
+  text-shadow: $sombra-escura;
 
-.weak-dark-ide-title .typed-cursor {
-  color: #ffd700;
-}
-
-.weak-dark-ide-verse {
-   color: #e0e0e0;
-}
-
-.weak-dark-ide-reference {
-  color: #e0e0e0;
-}
-
-.weak-dark-ide-louvor {
-  color: #e0e0e0;
-}
-
-.weak-dark-ide-link {
-   background-color: #ffd700;
-
-  i {
-    color: #000000;
+  .typed-cursor {
+    color: $cor-dourado;
   }
 }
 
-/*===============(LIGHT THEME)===============*/
+.dark-weak-ide-verse,
+.dark-weak-ide-reference,
+.dark-weak-ide-louvor {
+  font-family: $font-open-sans;
+  color: $cor-cinza-claro;
+}
+
+.dark-weak-ide-link {
+  background-color: $cor-dourado;
+
+  i {
+    color: $cor-preto;
+  }
+}
+
+// =============================
+// LIGHT THEME
+// =============================
 
 .light-ide-overlay-father {
   background-color: rgba(255, 255, 255, 0.764);
 }
 
 .light-ide-title {
-  color: #006196;
-  text-shadow: 2px 2px 4px rgba(64, 64, 64, 0.403);
-}
+  font-family: $font-quicksand;
+  color: $cor-azul-texto;
+  text-shadow: $sombra-clara;
 
-.light-ide-title .typed-cursor {
-  color: #006196;
-}
-
-.light-ide-verse {
-  color: #000000;
-}
-
-.light-ide-reference {
-  color: #000000;
-}
-
-.light-ide-louvor {
-  color: #000000;
-}
-
-.light-ide-link {
-   background-color: #003e5f;
-
-  i {
-    color: #ffffff;
+  .typed-cursor {
+    color: $cor-azul-texto;
   }
 }
 
+.light-ide-verse,
+.light-ide-reference,
+.light-ide-louvor {
+  font-family: $font-open-sans;
+  color: $cor-preto;
+}
 
-/*===============(WEAK LIGHT THEME)===============*/
+.light-ide-link {
+  background-color: $cor-azul-ieadpe;
+
+  i {
+    color: $cor-branco;
+  }
+}
+
+// =============================
+// WEAK LIGHT THEME
+// =============================
 
 .weak-light-ide-overlay-father {
   background-color: rgba(255, 255, 255, 0.293);
 }
 
 .weak-light-ide-title {
-  color: #006196;
-  text-shadow: 2px 2px 4px rgba(64, 64, 64, 0.403);
+  font-family: $font-quicksand;
+  color: $cor-azul-texto;
+  text-shadow: $sombra-clara;
+
+  .typed-cursor {
+    color: $cor-azul-texto;
+  }
 }
 
-.weak-light-ide-title .typed-cursor {
-  color: #006196;
-}
-
-.weak-light-ide-verse {
-  color: #000000;
+.weak-light-ide-verse,
+.weak-light-ide-louvor {
+  font-family: $font-open-sans;
+  color: $cor-preto;
 }
 
 .weak-light-ide-reference {
-  color: #000000;
-}
-
-.weak-light-ide-louvor {
-  color: #000000;
+  color: $cor-branco;
 }
 
 .weak-light-ide-link {
-   background-color: #003e5f;
+  background-color: $cor-azul-ieadpe;
 
   i {
-    color: #ffffff;
+    color: $cor-branco;
+  }
+}
+
+// =============================
+// IEADEPE BLUE THEME
+// =============================
+
+.azul-ieadpe-ide-overlay-father {
+  background-color: transparent;
+}
+
+.azul-ieadpe-ide-title {
+  font-family: $font-barlow !important;
+  color: $cor-branco;
+  font-weight: 500;
+  font-size: 2.6rem !important;
+  text-shadow: $sombra-clara;
+
+  .typed-cursor {
+    color: $cor-branco;
+  }
+}
+
+.azul-ieadpe-ide-verse {
+  font-family: $font-montserrat;
+  color: $cor-azul-destaque;
+  font-style: normal;
+}
+
+.azul-ieadpe-ide-reference {
+  font-family: $font-montserrat;
+  font-weight: 600;
+  font-style: normal;
+  color: red; 
+  text-transform: uppercase;
+}
+
+.azul-ieadpe-ide-louvor {
+  
+  color: $cor-branco;
+  font-weight: 500;
+}
+
+.azul-ieadpe-ide-link {
+  background-color: $cor-azul-ieadpe;
+
+  i {
+    color: $cor-branco;
+  }
+}
+
+
+// ===========================
+// ADORAÇÃO
+// ===========================
+
+.adoracao-ide-overlay-father {
+  background-color: rgba(0, 0, 0, 0.705);
+}
+
+.adoracao-ide-title {
+  font-family: $font-tangerine !important;
+  color: #ffb900;
+  font-weight: 900;
+  line-height: 1;
+  font-size: 4.5rem !important;
+  text-shadow: $sombra-clara;
+
+  .typed-cursor {
+    color: #ffb900;
+  }
+}
+
+.adoracao-ide-verse {
+  font-family: $font-montserrat;
+  color: $cor-branco;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
+.adoracao-ide-reference {
+  font-family: $font-montserrat;
+  font-weight: 600;
+  font-size: 1rem;
+  font-style: normal;
+  color: #ffffff; 
+  text-transform: uppercase;
+}
+
+.adoracao-ide-louvor {
+  
+  color: $cor-branco;
+  font-weight: 500;
+}
+
+.adoracao-ide-link {
+  background-color: $cor-azul-ieadpe;
+
+  i {
+    color: $cor-branco;
   }
 }

@@ -1,7 +1,7 @@
 export const backgroundOptions = [
   {
     value:
-      "https://scontent.cdninstagram.com/v/t51.75761-15/474548298_18343645135194850_681295967062939706_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzU1MDQ1NDEyOTgwMzgyNjU4NA%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTA4MC5zZHIuQzMifQ%3D%3D&_nc_ohc=Z4zjirieUHQQ7kNvwED5YaE&_nc_oc=AdmkrNVJHUB-zkob7Ph9DcLl74SCMiJVh0G1Ky4qksy4mvsGZZckfwkycWhIw5OCifk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=OVmBiosjR6_aovBMq_qT1g&oh=00_AfeeA7dmS-fMUT4xyujumhDzk69bOvtj2oofSZF3X0ltiw&oe=68F1CABC",
+      "https://i.imgur.com/K4Rq0pt.jpeg",
     label: "Cruzada na Praça",
   },
   {
@@ -30,6 +30,14 @@ export const backgroundOptions = [
   {
     value: "https://i.imgur.com/EVI0PBA.jpeg",
     label: "A volta de Jesus"
+  },
+  {
+    value: 'https://i.imgur.com/2jzRRVz.png',
+    label: 'Azul IEADPE'
+  },
+  {
+    value: 'https://i.imgur.com/zYpe1zI.jpeg',
+    label: 'Mão levantada em adoração'
   }
 ];
 
@@ -39,6 +47,8 @@ export const temaOptions = [
   { value: "light-weak", label: "Claro Fraco" },
   { value: "dark", label: "Escuro Forte" },
   { value: "dark-weak", label: "Escuro Fraco" },
+  { value: "azul-ieadpe", label: "Azul IEADPE" },
+  { value: 'adoracao', label: 'Adoração' }
 ];
 
 export const MOCK_DATA_INITIAL = {

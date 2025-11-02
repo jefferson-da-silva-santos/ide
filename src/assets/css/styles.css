@@ -3,11 +3,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
 }
 
 .label-preview {
@@ -316,7 +318,6 @@
 }
 
 .ide-title {
-  font-family: "Oswald", sans-serif;
   font-size: 3.5em;
   line-height: 1.2;
   max-width: 45rem;
@@ -325,7 +326,6 @@
 }
 
 .ide-verse {
-  font-family: "Open Sans", sans-serif;
   font-size: 1.5em;
   line-height: 1.5;
   font-style: italic;
@@ -335,6 +335,7 @@
 }
 
 .ide-reference {
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   display: block;
   margin-top: 0.5rem;
@@ -383,6 +384,9 @@
   gap: 0;
   background-color: #f2f2f2;
   min-height: 100vh;
+}
+.container-home * {
+  font-family: "Quicksand", sans-serif;
 }
 .container-home .header-home {
   grid-column: 2/-1;
@@ -843,29 +847,23 @@
   cursor: default; /* Mostra que não é clicável */
 }
 
-/*===============(DARK THEME)===============*/
 .dark-ide-overlay-father {
   background-color: rgba(0, 0, 0, 0.764);
 }
 
 .dark-ide-title {
+  font-family: "Quicksand", sans-serif;
   color: #ffd700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
-
 .dark-ide-title .typed-cursor {
   color: #ffd700;
 }
 
-.dark-ide-verse {
-  color: #e0e0e0;
-}
-
-.dark-ide-reference {
-  color: #e0e0e0;
-}
-
+.dark-ide-verse,
+.dark-ide-reference,
 .dark-ide-louvor {
+  font-family: "Open Sans", sans-serif;
   color: #e0e0e0;
 }
 
@@ -876,62 +874,50 @@
   color: #000000;
 }
 
-/*===============(DARK THEME)===============*/
-.weak-dark-ide-overlay-father {
+.dark-weak-ide-overlay-father {
   background-color: rgba(0, 0, 0, 0.445);
 }
 
-.weak-dark-ide-title {
+.dark-weak-ide-title {
+  font-family: "Quicksand", sans-serif;
   color: #ffd700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
-
-.weak-dark-ide-title .typed-cursor {
+.dark-weak-ide-title .typed-cursor {
   color: #ffd700;
 }
 
-.weak-dark-ide-verse {
+.dark-weak-ide-verse,
+.dark-weak-ide-reference,
+.dark-weak-ide-louvor {
+  font-family: "Open Sans", sans-serif;
   color: #e0e0e0;
 }
 
-.weak-dark-ide-reference {
-  color: #e0e0e0;
-}
-
-.weak-dark-ide-louvor {
-  color: #e0e0e0;
-}
-
-.weak-dark-ide-link {
+.dark-weak-ide-link {
   background-color: #ffd700;
 }
-.weak-dark-ide-link i {
+.dark-weak-ide-link i {
   color: #000000;
 }
 
-/*===============(LIGHT THEME)===============*/
 .light-ide-overlay-father {
   background-color: rgba(255, 255, 255, 0.764);
 }
 
 .light-ide-title {
+  font-family: "Quicksand", sans-serif;
   color: #006196;
   text-shadow: 2px 2px 4px rgba(64, 64, 64, 0.403);
 }
-
 .light-ide-title .typed-cursor {
   color: #006196;
 }
 
-.light-ide-verse {
-  color: #000000;
-}
-
-.light-ide-reference {
-  color: #000000;
-}
-
+.light-ide-verse,
+.light-ide-reference,
 .light-ide-louvor {
+  font-family: "Open Sans", sans-serif;
   color: #000000;
 }
 
@@ -942,36 +928,118 @@
   color: #ffffff;
 }
 
-/*===============(WEAK LIGHT THEME)===============*/
 .weak-light-ide-overlay-father {
   background-color: rgba(255, 255, 255, 0.293);
 }
 
 .weak-light-ide-title {
+  font-family: "Quicksand", sans-serif;
   color: #006196;
   text-shadow: 2px 2px 4px rgba(64, 64, 64, 0.403);
 }
-
 .weak-light-ide-title .typed-cursor {
   color: #006196;
 }
 
-.weak-light-ide-verse {
+.weak-light-ide-verse,
+.weak-light-ide-louvor {
+  font-family: "Open Sans", sans-serif;
   color: #000000;
 }
 
 .weak-light-ide-reference {
-  color: #000000;
-}
-
-.weak-light-ide-louvor {
-  color: #000000;
+  color: #ffffff;
 }
 
 .weak-light-ide-link {
   background-color: #003e5f;
 }
 .weak-light-ide-link i {
+  color: #ffffff;
+}
+
+.azul-ieadpe-ide-overlay-father {
+  background-color: transparent;
+}
+
+.azul-ieadpe-ide-title {
+  font-family: "Barlow Condensed", sans-serif !important;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 2.6rem !important;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 0.403);
+}
+.azul-ieadpe-ide-title .typed-cursor {
+  color: #ffffff;
+}
+
+.azul-ieadpe-ide-verse {
+  font-family: "Montserrat", sans-serif;
+  color: #9dd3ff;
+  font-style: normal;
+}
+
+.azul-ieadpe-ide-reference {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: red;
+  text-transform: uppercase;
+}
+
+.azul-ieadpe-ide-louvor {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.azul-ieadpe-ide-link {
+  background-color: #003e5f;
+}
+.azul-ieadpe-ide-link i {
+  color: #ffffff;
+}
+
+.adoracao-ide-overlay-father {
+  background-color: rgba(0, 0, 0, 0.705);
+}
+
+.adoracao-ide-title {
+  font-family: "Tangerine", cursive !important;
+  color: #ffb900;
+  font-weight: 900;
+  line-height: 1;
+  font-size: 4.5rem !important;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 0.403);
+}
+.adoracao-ide-title .typed-cursor {
+  color: #ffb900;
+}
+
+.adoracao-ide-verse {
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
+.adoracao-ide-reference {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  font-style: normal;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.adoracao-ide-louvor {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.adoracao-ide-link {
+  background-color: #003e5f;
+}
+.adoracao-ide-link i {
   color: #ffffff;
 }
 
