@@ -9,11 +9,13 @@ import { FormContent } from "./components/FormContent";
 import Invitation from "./pages/invitation";
 import AdminOnly from "./components/AdminOnly";
 import { useState } from "react";
+import useAccessLogger from "./hooks/useAcess";
 
 const ramdomNumber = Math.floor(Math.random() * 5) + 1;
 const quantityPagesIde = [1, 2, 3, 4, 5];
 
 function App() {
+  useAccessLogger('ide_e_pregai');
   const [destinationPage, setDestinationPage] = useState(() => {
     const savedId = localStorage.getItem("paginaSelecionada");
     return savedId ? Number(savedId) : quantityPagesIde[0];
